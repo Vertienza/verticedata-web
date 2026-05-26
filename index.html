@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <style>
     *,
@@ -35,6 +35,19 @@
       --border: rgba(255, 255, 255, 0.08);
       --radius: 12px;
       --radius-lg: 20px;
+      --cream: #f7f5f0;
+      --ink: #16203d;
+    }
+
+    /* Tema claro: aplicado por sección. Redefine las variables de color
+       para que los componentes (cards, títulos, texto) se recoloreen solos. */
+    .light {
+      background: var(--cream);
+      color: var(--ink);
+      --white: var(--ink);
+      --muted: #5b6478;
+      --navy-card: #ffffff;
+      --border: rgba(20, 30, 60, 0.10);
     }
 
     html {
@@ -168,6 +181,16 @@
       padding: 120px 24px 80px;
       position: relative;
       overflow: hidden;
+      background: radial-gradient(ellipse 120% 85% at 50% 0%, var(--navy-mid) 0%, var(--navy) 62%);
+    }
+
+    #hero-net {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .hero-glow {
@@ -180,6 +203,7 @@
       border-radius: 50%;
       background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.18) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 1;
     }
 
     .hero-inner {
@@ -190,6 +214,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-tag {
@@ -209,6 +235,13 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    .hero-h1 .serif {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
     }
 
     .hero-sub {
@@ -264,7 +297,6 @@
     /* ── PAIN ── */
     #pain {
       padding: 100px 24px;
-      background: #060d20;
     }
 
     .section-header {
@@ -622,6 +654,67 @@
     /* mermaid diagram forced dark */
     .mermaid {
       text-align: center;
+    }
+
+    /* ── SERVICIOS ── */
+    #servicios {
+      padding: 100px 24px;
+    }
+
+    .svc-featured {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(16, 185, 129, 0.06));
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .svc-featured-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue-lt);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .svc-featured h3 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      margin-bottom: 8px;
+    }
+
+    .svc-featured p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 560px;
+    }
+
+    .svc-featured-meta {
+      font-size: 13px;
+      color: var(--white);
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .pain-icon.blue {
+      background: rgba(37, 99, 235, 0.15);
+    }
+
+    .pain-icon.teal {
+      background: rgba(14, 165, 233, 0.15);
+    }
+
+    .pain-icon.emerald {
+      background: rgba(16, 185, 129, 0.15);
     }
 
     /* ── CTA ── */
@@ -1030,38 +1123,38 @@
       <ul class="nav-links">
         <li><a href="#pain">El problema</a></li>
         <li><a href="#method">Metodología</a></li>
+        <li><a href="#servicios">Servicios</a></li>
         <li><a href="#cases">Casos reales</a></li>
         <li><a href="#about">Sobre nosotros</a></li>
       </ul>
-      <a href="#cta" class="btn-nav">Reserva tu sesión →</a>
+      <a href="#cta" class="btn-nav">Contacta →</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
+    <canvas id="hero-net"></canvas>
     <div class="hero-glow"></div>
     <div class="hero-inner" style="grid-template-columns:1fr; text-align:center; max-width:720px; margin:0 auto;">
       <div>
-        <div class="hero-tag">
-          <span class="tag">Consultoría de operaciones y procesos para PYMEs</span>
-        </div>
         <h1 class="hero-h1">
-          Menos fricción operativa.<br />
-          <span class="highlight">Más margen.</span>
+          Tecnología que transforma,<br />
+          creatividad que conecta,<br />
+          <span class="highlight">resultados para tu negocio.</span>
         </h1>
         <p class="hero-sub">
-          Analizamos las operaciones de tu empresa, identificamos dónde se pierde tiempo y dinero, y conectamos los procesos para que dejen de perderse. No nos quedamos en el informe — entregamos lo que recomendamos.
+          Branding, operaciones y datos para distribuidores, marcas y retail. De la estrategia a la ejecución.
         </p>
         <div class="hero-ctas" style="justify-content:center;">
-          <a href="#cta" class="btn-primary">Reserva tu sesión</a>
-          <a href="#cases" class="btn-secondary">Ver casos reales</a>
+          <a href="#servicios" class="btn-primary">Qué hacemos</a>
+          <a href="#cta" class="btn-secondary">Reserva tu sesión</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PAIN -->
-  <section id="pain">
+  <section id="pain" class="light">
     <div class="container reveal">
       <div class="section-header">
         <span class="tag">Esto te suena</span>
@@ -1134,6 +1227,49 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="container reveal">
+      <div class="section-header">
+        <span class="tag">Servicios</span>
+        <h2 class="section-h2" style="margin-top:16px;">De un diagnóstico claro<br />a la solución montada.</h2>
+        <p class="section-sub">Empezamos por entender qué arreglar. Después lo implementamos. Estos son los servicios con los que lo hacemos.</p>
+      </div>
+
+      <!-- Diagnóstico Operativo (puerta / land) -->
+      <div class="svc-featured">
+        <div>
+          <span class="svc-featured-tag">Empieza por aquí</span>
+          <h3>Diagnóstico Operativo</h3>
+          <p>Antes de comprometerte a nada grande, analizamos tu operación y te entregamos un plan priorizado: qué arreglar y en qué orden. El informe es tuyo, lo contrates o no.</p>
+          <p class="svc-featured-meta">Precio cerrado · 2-4 semanas · entregable concreto</p>
+        </div>
+        <a href="#cta" class="btn-primary">Empezar por el diagnóstico</a>
+      </div>
+
+      <!-- Servicios con caso real -->
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon blue">📦</div>
+          <p class="pain-title" style="font-size:17px;">Catálogo Inteligente</p>
+          <p class="pain-desc">Diseñamos, conectamos y automatizamos tu catálogo en una fuente única de verdad — para que tu información de producto deje de estar dispersa y alimente todos tus canales, sola.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon teal">📊</div>
+          <p class="pain-title" style="font-size:17px;">Visibilidad de Negocio</p>
+          <p class="pain-desc">Ordenamos tus datos y montamos los dashboards que tu dirección consulta sin pedir un informe cada vez — márgenes, crecimientos y ventas por zona, a un clic.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon emerald">🎧</div>
+          <p class="pain-title" style="font-size:17px;">Soporte Inteligente</p>
+          <p class="pain-desc">Ordenamos tu atención al cliente con ticketing profesional y la potenciamos con IA — para que tengas datos de tu soporte y tu equipo se quede los casos que de verdad importan.</p>
+        </div>
+      </div>
+
+      <p class="pain-footer" style="margin-top:32px;">Y más en camino: pricing, promociones, visibilidad en buscadores con IA y análisis de categoría. <span>Pregúntanos.</span></p>
     </div>
   </section>
 
@@ -1402,6 +1538,68 @@
         form.innerHTML = '<p style="text-align:center; font-size:16px; color:var(--muted); padding:40px 0;">Ha habido un error. Escríbenos directamente a <a href="mailto:alejandro@verticedata.tech" style="color:var(--blue-lt);">alejandro@verticedata.tech</a></p>';
       });
     });
+
+    // Hero network animation (vértices / nodos que conectan)
+    (function () {
+      const canvas = document.getElementById('hero-net');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let w, h, nodes, raf;
+
+      function build() {
+        const hero = canvas.parentElement;
+        w = canvas.width = hero.offsetWidth;
+        h = canvas.height = hero.offsetHeight;
+        const count = Math.min(72, Math.floor((w * h) / 17000));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.28,
+          vy: (Math.random() - 0.5) * 0.28
+        }));
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          if (!reduce) {
+            n.x += n.vx; n.y += n.vy;
+            if (n.x < 0 || n.x > w) n.vx *= -1;
+            if (n.y < 0 || n.y > h) n.vy *= -1;
+          }
+          for (let j = i + 1; j < nodes.length; j++) {
+            const m = nodes[j];
+            const dx = n.x - m.x, dy = n.y - m.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 135) {
+              ctx.strokeStyle = 'rgba(59,130,246,' + (1 - dist / 135) * 0.20 + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(n.x, n.y);
+              ctx.lineTo(m.x, m.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (let k = 0; k < nodes.length; k++) {
+          ctx.fillStyle = 'rgba(14,165,233,0.5)';
+          ctx.beginPath();
+          ctx.arc(nodes[k].x, nodes[k].y, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        if (!reduce) raf = requestAnimationFrame(draw);
+      }
+
+      build();
+      draw();
+      let rt;
+      window.addEventListener('resize', function () {
+        clearTimeout(rt);
+        rt = setTimeout(function () { cancelAnimationFrame(raf); build(); draw(); }, 200);
+      });
+    })();
   </script>
 </body>
 
