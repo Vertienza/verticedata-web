@@ -661,19 +661,6 @@
       padding: 100px 24px;
     }
 
-    .svc-featured {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(16, 185, 129, 0.06));
-      border: 1px solid rgba(37, 99, 235, 0.35);
-      border-radius: var(--radius-lg);
-      padding: 32px 36px;
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
     .svc-featured-tag {
       font-size: 11px;
       font-weight: 700;
@@ -682,27 +669,6 @@
       color: var(--blue-lt);
       margin-bottom: 10px;
       display: inline-block;
-    }
-
-    .svc-featured h3 {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -.01em;
-      margin-bottom: 8px;
-    }
-
-    .svc-featured p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 560px;
-    }
-
-    .svc-featured-meta {
-      font-size: 13px;
-      color: var(--white);
-      margin-top: 10px;
-      font-weight: 600;
     }
 
     .pain-icon.blue {
@@ -715,6 +681,142 @@
 
     .pain-icon.emerald {
       background: rgba(16, 185, 129, 0.15);
+    }
+
+    /* ── DIAGNÓSTICO (puerta de entrada) ── */
+    #diagnostico {
+      padding: 40px 24px 60px;
+    }
+
+    .diag-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(16, 185, 129, 0.06));
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .diag-box .svc-featured-tag {
+      margin-bottom: 14px;
+    }
+
+    .diag-box h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .diag-box p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 24px;
+    }
+
+    .diag-box .cta-checklist {
+      margin-bottom: 28px;
+    }
+
+    /* ── MANIFIESTO / propuesta de valor ── */
+    #manifiesto {
+      padding: 100px 24px 60px;
+    }
+
+    .manifiesto-h2 {
+      font-size: clamp(26px, 3.4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.18;
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .manifiesto-p {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 18px;
+    }
+
+    .manifiesto-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    /* override .pill en tema claro (trampa documentada: el rgba blanco no contrasta sobre crema) */
+    .light .pill {
+      background: rgba(20, 30, 60, 0.05);
+      border: 1px solid rgba(20, 30, 60, 0.12);
+      color: var(--ink);
+    }
+
+    /* ── HUB / cadena de valor ── */
+    #hub {
+      padding: 40px 24px 100px;
+    }
+
+    .hub-map {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: stretch;
+      gap: 16px;
+    }
+
+    .hub-node {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .hub-node:hover {
+      transform: translateY(-3px);
+      border-color: rgba(37, 99, 235, 0.35);
+    }
+
+    .hub-icon {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .hub-node h3 {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      margin-bottom: 8px;
+    }
+
+    .hub-node p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hub-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--blue-lt);
+    }
+
+    @media (max-width: 768px) {
+      .hub-map {
+        grid-template-columns: 1fr;
+      }
+
+      .hub-arrow {
+        transform: rotate(90deg);
+        padding: 4px 0;
+      }
     }
 
     /* ── CTA ── */
@@ -1121,8 +1223,9 @@
         <span class="logo-text">Vértice</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#pain">El problema</a></li>
+        <li><a href="#manifiesto">Qué hacemos</a></li>
         <li><a href="#method">Metodología</a></li>
+        <li><a href="#diagnostico">Diagnóstico</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#cases">Casos reales</a></li>
         <li><a href="#about">Sobre nosotros</a></li>
@@ -1138,44 +1241,59 @@
     <div class="hero-inner" style="grid-template-columns:1fr; text-align:center; max-width:720px; margin:0 auto;">
       <div>
         <h1 class="hero-h1">
-          Tecnología que transforma,<br />
-          creatividad que conecta,<br />
-          <span class="highlight">resultados para tu negocio.</span>
+          Branding, operaciones y datos<br />
+          <span class="highlight">para tu negocio.</span>
         </h1>
         <p class="hero-sub">
-          Branding, operaciones y datos para distribuidores, marcas y retail. De la estrategia a la ejecución.
+          Trabajamos con distribuidores, marcas y retail: ordenamos el catálogo, conectamos los procesos y lo convertimos en marca y en contenido que vende.
         </p>
         <div class="hero-ctas" style="justify-content:center;">
-          <a href="#servicios" class="btn-primary">Qué hacemos</a>
-          <a href="#cta" class="btn-secondary">Reserva tu sesión</a>
+          <a href="#cta" class="btn-primary">Contáctanos</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PAIN -->
-  <section id="pain" class="light">
+  <!-- MANIFIESTO / propuesta de valor -->
+  <section id="manifiesto" class="light">
     <div class="container reveal">
-      <div class="section-header">
-        <span class="tag">Esto te suena</span>
-        <h2 class="section-h2" style="margin-top:16px;">Los problemas que nadie resuelve<br />porque "siempre se ha hecho así".</h2>
-        <p class="section-sub">Si llevas una PYME — distribución, marca, retail, servicios — alguno de estos te va a resultar familiar.</p>
+      <span class="tag">Qué es Vértice</span>
+      <h2 class="manifiesto-h2" style="margin-top:16px;">Tres disciplinas que casi nunca hablan entre sí.<br />Aquí trabajan juntas.</h2>
+      <p class="manifiesto-p">En la mayoría de empresas, quien gestiona el catálogo, quien diseña la marca y quien lleva las redes son equipos distintos que no se coordinan. El resultado: datos que no llegan a la web, una marca que no se nota en el producto y contenido que se inventa de cero cada vez.</p>
+      <p class="manifiesto-p">En Vértice somos un solo equipo que cubre las tres: estructuramos el dato de producto, lo vestimos con marca y lo distribuimos como contenido. La misma ficha que ordenamos en tu catálogo acaba siendo el post que publica tu marca.</p>
+      <div class="manifiesto-tags">
+        <span class="pill">Datos</span>
+        <span class="pill">Branding</span>
+        <span class="pill">Comunicación</span>
       </div>
-      <div class="pain-grid">
-        <div class="pain-card">
-          <div class="pain-icon red">📦</div>
-          <p class="pain-title">Tu catálogo es un caos</p>
-          <p class="pain-desc">Cada departamento tiene su Excel. Amazon tiene mejor información de tus productos que tú. Lanzar un producto nuevo a todos los canales tarda semanas.</p>
+    </div>
+  </section>
+
+  <!-- HUB / cadena de valor -->
+  <section id="hub" class="light">
+    <div class="container reveal">
+      <div style="margin-bottom:36px;">
+        <span class="tag">Cómo encaja todo</span>
+        <h2 class="section-h2" style="margin-top:16px;">De tu catálogo a tu comunicación,<br />en una sola cadena.</h2>
+        <p class="section-sub" style="max-width:560px; margin:8px 0 0;">Cada pieza alimenta a la siguiente. Puedes entrar por donde lo necesites.</p>
+      </div>
+      <div class="hub-map">
+        <div class="hub-node">
+          <div class="hub-icon">📦</div>
+          <h3>Catálogo</h3>
+          <p>Estructuramos el dato de producto en una fuente única de verdad que alimenta todos tus canales.</p>
         </div>
-        <div class="pain-card">
-          <div class="pain-icon orange">⏱️</div>
-          <p class="pain-title">Tu equipo hace trabajo que una máquina debería hacer</p>
-          <p class="pain-desc">Copiar datos entre sistemas, actualizar fichas a mano, enviar los mismos archivos cada semana. Horas que no vuelven.</p>
+        <div class="hub-arrow">→</div>
+        <div class="hub-node">
+          <div class="hub-icon">🎨</div>
+          <h3>Branding</h3>
+          <p>Le damos identidad: una marca coherente que se nota en cada ficha y en cada canal.</p>
         </div>
-        <div class="pain-card">
-          <div class="pain-icon yellow">🔌</div>
-          <p class="pain-title">Tus sistemas no se hablan entre sí</p>
-          <p class="pain-desc">ERP por un lado, web por otro, marketplaces por otro. Lo que cambia en uno no llega a los demás. Errores constantes.</p>
+        <div class="hub-arrow">→</div>
+        <div class="hub-node">
+          <div class="hub-icon">📣</div>
+          <h3>Comunicación</h3>
+          <p>Lo distribuimos: contenido y redes que parten de tu catálogo, ya con marca.</p>
         </div>
       </div>
     </div>
@@ -1230,24 +1348,30 @@
     </div>
   </section>
 
+  <!-- DIAGNÓSTICO (puerta de entrada) -->
+  <section id="diagnostico">
+    <div class="container reveal">
+      <div class="diag-box">
+        <span class="svc-featured-tag">Empieza por aquí · Diagnóstico Operativo</span>
+        <h2>Sabes que algo en tu operación no va fino.<br />Empieza por saber qué.</h2>
+        <p>Un diagnóstico acotado de tu operación, en 2-4 semanas, con un plan priorizado: qué arreglar y en qué orden. El informe es tuyo, lo contrates o no.</p>
+        <ul class="cta-checklist">
+          <li>Te decimos también lo que NO necesitas</li>
+          <li>El informe es tuyo aunque no sigas</li>
+          <li>Si sigues, se descuenta del primer proyecto</li>
+        </ul>
+        <a href="#cta" class="btn-primary">Empezar por el diagnóstico</a>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICIOS -->
   <section id="servicios">
     <div class="container reveal">
       <div class="section-header">
         <span class="tag">Servicios</span>
-        <h2 class="section-h2" style="margin-top:16px;">De un diagnóstico claro<br />a la solución montada.</h2>
-        <p class="section-sub">Empezamos por entender qué arreglar. Después lo implementamos. Estos son los servicios con los que lo hacemos.</p>
-      </div>
-
-      <!-- Diagnóstico Operativo (puerta / land) -->
-      <div class="svc-featured">
-        <div>
-          <span class="svc-featured-tag">Empieza por aquí</span>
-          <h3>Diagnóstico Operativo</h3>
-          <p>Antes de comprometerte a nada grande, analizamos tu operación y te entregamos un plan priorizado: qué arreglar y en qué orden. El informe es tuyo, lo contrates o no.</p>
-          <p class="svc-featured-meta">Precio cerrado · 2-4 semanas · entregable concreto</p>
-        </div>
-        <a href="#cta" class="btn-primary">Empezar por el diagnóstico</a>
+        <h2 class="section-h2" style="margin-top:16px;">Del problema<br />a la solución montada.</h2>
+        <p class="section-sub">Diagnosticamos qué arreglar y lo implementamos. Estos son los servicios con los que lo hacemos.</p>
       </div>
 
       <!-- Servicios con caso real -->
@@ -1279,7 +1403,7 @@
       <div class="section-header">
         <span class="tag">Casos reales</span>
         <h2 class="section-h2" style="margin-top:16px;">Proyectos implementados.<br />No ejemplos hipotéticos.</h2>
-        <p class="section-sub">Implementados en operaciones reales de distribución y consumo. Más casos por servicio en preparación.</p>
+        <p class="section-sub">No tenemos cien casos. Tenemos los que hemos hecho de verdad, y los contamos como fueron. Más casos en camino.</p>
       </div>
 
       <div class="cases-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
