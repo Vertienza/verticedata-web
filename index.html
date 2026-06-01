@@ -297,6 +297,26 @@
       box-shadow: 0 12px 32px rgba(20, 30, 60, 0.08);
     }
 
+    /* card que enlaza a su página de servicio */
+    a.svc-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .svc-more {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue);
+      transition: transform .2s;
+    }
+
+    a.svc-card:hover .svc-more {
+      transform: translateX(3px);
+    }
+
     .svc-icon {
       margin-bottom: 18px;
       line-height: 0;
@@ -618,13 +638,14 @@
         <p class="section-sub">Del dato de producto a la marca y el contenido que vende. Entras por donde lo necesites.</p>
       </div>
       <div class="svc-grid">
-        <div class="svc-card">
+        <a href="servicios/catalogo-inteligente.html" class="svc-card svc-card--link">
           <div class="svc-icon ico-blue">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg>
           </div>
           <h3>Catálogo</h3>
           <p>Estructuramos el dato de producto en una fuente única de verdad que alimenta todos tus canales, sola.</p>
-        </div>
+          <span class="svc-more">Ver el servicio →</span>
+        </a>
         <div class="svc-card">
           <div class="svc-icon ico-teal">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
