@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Inteligente — Vértice</title>
+  <meta name="description"
+    content="Centralizamos la información de todos tus productos en una única fuente de verdad, la estructuramos para tus canales y la IA, y la distribuimos sola. Montado sobre Sales Layer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/service.css" />
+  <!-- marca JS activo antes del primer paint: evita el flash de los .reveal -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<!-- El acento de esta página es azul (default). Otro servicio: style="--accent: var(--teal); --accent-soft: rgba(14,165,233,.10)" -->
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark"></div>
+        <span class="logo-text">Vértice</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#servicios">Servicios</a></li>
+        <li><a href="../index.html">Inicio</a></li>
+      </ul>
+      <a href="../index.html#cta" class="btn-nav">Contacta →</a>
+    </div>
+  </nav>
+
+  <!-- ════ HERO / INTRO ════ -->
+  <header class="svc-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="../index.html">Inicio</a><span>/</span>
+        <a href="../index.html#servicios">Servicios</a><span>/</span>
+        Catálogo Inteligente
+      </nav>
+      <div class="svc-hero__grid">
+        <div>
+          <span class="tag">Catálogo Inteligente</span>
+          <h1>Implementa tu catálogo de producto <span class="highlight">con confianza.</span></h1>
+          <p class="lead">
+            No solo montamos la herramienta: te acompañamos en cada decisión de negocio, de la
+            elección a la puesta en marcha, hasta dejarlo funcionando.
+          </p>
+          <div class="partner-cred">
+            <img class="partner-cred__badge" src="../img/sl-certified-partner.png" alt="Insignia oficial de Sales Layer Certified Partner" />
+            <div class="partner-cred__txt">
+              <strong>Partner Certificado de Sales Layer</strong>
+              <span>Implementamos el PIM como partner oficial.</span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-hero__media reveal" style="--i:1">
+          <!-- mockup nativo (UI ilustrada, sin datos reales): el catálogo como debería verse -->
+          <div class="ui ui-cat" role="img" aria-label="Ejemplo de catálogo de producto centralizado: cada referencia con su ficha y su porcentaje de completitud.">
+            <div class="ui__head">
+              <span class="ui__logo" aria-hidden="true"></span>
+              <span class="ui__title">Catálogo de producto</span>
+              <span class="ui__sub">1.248 referencias</span>
+            </div>
+            <div class="ui-cat__row ui-cat__head" aria-hidden="true">
+              <span></span><span></span><span>Producto</span><span>Completitud</span>
+            </div>
+            <div class="ui-cat__row" aria-hidden="true">
+              <span class="ui-check on"></span>
+              <span class="ui-thumb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+              <span class="nm"><span class="skel skel--lg"></span><span class="skel skel--sm"></span></span>
+              <span class="ui-bar"><span class="ui-bar__fill" style="width:96%"></span></span>
+            </div>
+            <div class="ui-cat__row" aria-hidden="true">
+              <span class="ui-check on"></span>
+              <span class="ui-thumb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 3-3.5 3.5 5.5 5.5L21 8.5z"/><path d="m11 7-8 8 5 5 8-8z"/></svg></span>
+              <span class="nm"><span class="skel skel--md"></span><span class="skel skel--xs"></span></span>
+              <span class="ui-bar"><span class="ui-bar__fill" style="width:88%"></span></span>
+            </div>
+            <div class="ui-cat__row" aria-hidden="true">
+              <span class="ui-check"></span>
+              <span class="ui-thumb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/></svg></span>
+              <span class="nm"><span class="skel skel--lg"></span><span class="skel skel--sm"></span></span>
+              <span class="ui-bar"><span class="ui-bar__fill amber" style="width:54%"></span></span>
+            </div>
+            <div class="ui-cat__row" aria-hidden="true">
+              <span class="ui-check on"></span>
+              <span class="ui-thumb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 12 5.45 5.45c.39.39 1.02.39 1.41 0L12 14"/><path d="M17 8.5 22 3"/><path d="M22 8V3h-5"/><circle cx="6" cy="6" r="3"/></svg></span>
+              <span class="nm"><span class="skel skel--md"></span><span class="skel skel--xs"></span></span>
+              <span class="ui-bar"><span class="ui-bar__fill" style="width:79%"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════ §1 PROBLEMA — statement asimétrico ════ -->
+  <section class="section section--alt">
+    <span class="sec-index" aria-hidden="true">01</span>
+    <div class="container asym reveal">
+      <div>
+        <p class="eyebrow">El problema</p>
+        <p class="statement">¿Tu catálogo de producto es un caos?</p>
+      </div>
+      <div>
+        <p class="prose">
+          Miles de referencias repartidas entre el ERP, hojas de Excel y la cabeza de varias
+          personas. Nadie tiene la versión correcta y completa de un producto en un único sitio.
+        </p>
+        <p class="prose">
+          <strong>Lo convertimos en tu fuente única de verdad</strong> — y de ahí, en inteligencia
+          de producto que alimenta todos tus canales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ §2 SÍNTOMAS — lista numerada grande ════ -->
+  <section class="section">
+    <span class="sec-index" aria-hidden="true">02</span>
+    <div class="container reveal">
+      <p class="eyebrow">Síntomas</p>
+      <h2 class="h2">¿Te pasa esto?</h2>
+      <div class="symptom-list">
+        <div class="symptom reveal" style="--i:0">
+          <span class="symptom__n">01</span>
+          <p class="symptom__t">Tu mejor catálogo no lo tienes tú: <strong>lo tiene Amazon, Shopify</strong> o el marketplace donde alguien, en algún momento, cargó los datos con cierto orden.</p>
+        </div>
+        <div class="symptom reveal" style="--i:1">
+          <span class="symptom__n">02</span>
+          <p class="symptom__t">Cada departamento maneja su propia versión: marketing unas descripciones, ventas otras, logística sus medidas. <strong>Tantos errores como personas tocando los datos.</strong></p>
+        </div>
+        <div class="symptom reveal" style="--i:2">
+          <span class="symptom__n">03</span>
+          <p class="symptom__t">Lanzar un producto a un canal nuevo significa <strong>montar los datos a mano desde cero</strong>: recopilar del ERP, cruzar con Excels, completar con lo que cada uno recuerda.</p>
+        </div>
+        <div class="symptom reveal" style="--i:3">
+          <span class="symptom__n">04</span>
+          <p class="symptom__t">No hay un único lugar donde consultar la información fiable de un producto.</p>
+        </div>
+        <div class="symptom reveal" style="--i:4">
+          <span class="symptom__n">05</span>
+          <p class="symptom__t">Actualizar catálogos es un proceso manual de días o semanas que nadie quiere tocar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ §3 LO QUE HACEMOS — cards + infografía de flujo ════ -->
+  <section class="section section--alt">
+    <span class="sec-index" aria-hidden="true">03</span>
+    <div class="container reveal">
+      <p class="eyebrow">Lo que hacemos</p>
+      <h2 class="h2">Lo montamos, lo conectamos y te lo dejamos funcionando.</h2>
+      <p class="lede">Tú decides crecer; nosotros nos encargamos de la herramienta y de tus datos. Implementación experta sobre <strong>Sales Layer</strong>.</p>
+
+      <div class="do-grid do-grid-3">
+        <div class="card reveal" style="--i:0">
+          <div class="card__icon ico-blue">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+          </div>
+          <h3>Fuente única de verdad</h3>
+          <p>Reunimos toda la información de tus productos en una sola fuente, con cada ficha completa y validada.</p>
+        </div>
+
+        <div class="card reveal" style="--i:1">
+          <div class="card__icon ico-teal">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+          </div>
+          <h3>Reglas por canal</h3>
+          <p>Definimos contigo qué producto va a cada canal, según stock y criterio de negocio.</p>
+        </div>
+
+        <div class="card reveal" style="--i:2">
+          <div class="card__icon ico-blue">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          </div>
+          <h3>Preparado para IA</h3>
+          <p>Estructuramos tus datos con el estándar de Google para que los buscadores y la IA —ChatGPT, Perplexity— entiendan y recomienden tus productos.</p>
+        </div>
+      </div>
+
+      <div class="do-grid">
+        <div class="card card--visual reveal" style="--i:0">
+          <div class="card__mock">
+            <div class="ui ui-ch" role="img" aria-label="Una fuente, muchos canales de salida: marketplaces, e-commerce, catálogo impreso, packaging, analítica y brand portal.">
+              <div class="ui-ch__grid" aria-hidden="true">
+                <span class="ch-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>Marketplaces</span>
+                <span class="ch-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>E-commerce</span>
+                <span class="ch-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>Catálogo impreso</span>
+                <span class="ch-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>Packaging</span>
+                <span class="ch-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Analítica</span>
+                <span class="ch-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Brand Portal</span>
+              </div>
+            </div>
+          </div>
+          <h3>Conectores de salida</h3>
+          <p>Enlazamos marketplaces, e-commerce, catálogo impreso, packaging y analítica. <strong>Cada canal se actualiza solo.</strong></p>
+        </div>
+
+        <div class="card card--visual reveal" style="--i:1">
+          <div class="card__mock">
+            <div class="ui ui-pf" role="img" aria-label="Ficha de producto completa y validada: imagen, color, medidas y EAN, cada campo verificado.">
+              <div class="ui-pf__img" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                <span class="ui-pf__badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              </div>
+              <div class="ui-pf__attrs" aria-hidden="true">
+                <div class="ui-pf__attr"><span class="k">Color</span><span class="v">Azul</span><svg class="ok" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                <div class="ui-pf__attr"><span class="k">Medidas</span><span class="v">30×20 cm</span><svg class="ok" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                <div class="ui-pf__attr"><span class="k">EAN</span><span class="v">8412…</span><svg class="ok" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <h3>Activos digitales ordenados</h3>
+          <p>Fotos, vídeos y fichas con <strong>nomenclatura automática</strong> y validadas.</p>
+        </div>
+      </div>
+
+      <!-- INFOGRAFÍA de flujo (CSS, no Mermaid) -->
+      <div class="flow reveal">
+        <p class="flow__caption">
+          Tus datos entran de muchas fuentes, se enriquecen y normalizan <strong>una sola vez</strong>
+          en la fuente de verdad, y salen automáticamente a todos tus canales.
+        </p>
+        <div class="flow__stage">
+          <div>
+            <p class="flow__label">Fuentes</p>
+            <div class="flow__chip flow__chip--src">ERP / SAP <small>códigos, EAN, medidas, jerarquía</small></div>
+            <div class="flow__chip flow__chip--src">Bases de datos propias</div>
+            <div class="flow__chip flow__chip--src">Activos de marketing <small>fotos, vídeos, fichas</small></div>
+            <div class="flow__chip flow__chip--src">Tarifas y contenido de fabricante</div>
+            <div class="flow__chip flow__chip--src">Enriquecimiento manual</div>
+          </div>
+          <div class="flow__arrow">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+          <div class="flow__core">
+            <div class="k">Fuente de verdad</div>
+            <div class="t">PIM</div>
+            <div class="d">normaliza · enriquece ·<br />aplica reglas de negocio</div>
+          </div>
+          <div class="flow__arrow">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+          <div>
+            <p class="flow__label">Canales</p>
+            <div class="flow__chip flow__chip--out">Marketplaces <small>Amazon</small></div>
+            <div class="flow__chip flow__chip--out">E-commerce <small>Shopify</small></div>
+            <div class="flow__chip flow__chip--out">Catálogo impreso</div>
+            <div class="flow__chip flow__chip--out">Packaging e informes</div>
+            <div class="flow__chip flow__chip--out">Analítica interna</div>
+            <div class="flow__chip flow__chip--out">Brand Portal</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="deliver reveal">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+        <p><strong>Lo que te entregamos:</strong> catálogo centralizado funcionando, conectores activos a tus canales, y un procedimiento claro de quién enriquece qué. No un informe — el sistema montado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ §4 CASO — sticky imagen + texto ════ -->
+  <section class="section">
+    <span class="sec-index" aria-hidden="true">04</span>
+    <div class="container reveal">
+      <p class="eyebrow">Caso real</p>
+      <h2 class="h2">Imprex.es: de 10.000 referencias dispersas a una fuente de verdad.</h2>
+
+      <p class="case-kicker">El reto</p>
+      <p class="case-intro">
+        <strong>Imprex.es</strong>, distribuidor de gran consumo con <strong>~10.000 referencias</strong>
+        (Garza, Energizer, WD-40, Henkel), tenía su mejor catálogo en los canales online, no en casa:
+        cada departamento con datos distintos y <strong>3-4 horas</strong> de trabajo manual para
+        alimentar cada canal nuevo.
+      </p>
+
+      <div class="sticky-case">
+        <figure class="figure-frame sticky-case__media">
+          <img src="../img/catalogo-categorias.png" alt="Familias de producto por marca centralizadas en el PIM, cada una con su porcentaje de completitud de ficha" loading="lazy" />
+          <figcaption>Catálogo real de Imprex centralizado en Sales Layer: cada marca con su porcentaje de completitud de ficha.</figcaption>
+        </figure>
+        <div class="case-build">
+          <p class="case-kicker">La solución</p>
+          <h4>Lo que montamos</h4>
+          <ul class="case-list">
+            <li>Una <strong>fuente única de verdad</strong> (Sales Layer) conectada a SAP y sincronizada automáticamente.</li>
+            <li><strong>Todas las familias organizadas por marca</strong>, enriquecidas con datos comerciales y multimedia.</li>
+            <li><strong>6 conectores</strong> funcionando: Amazon, Shopify, catálogo impreso, packaging, analítica y brand portal.</li>
+          </ul>
+          <!-- mockup CSS nativo: 6 conectores activos (limpio, sin datos internos) -->
+          <div class="conn-mock" aria-label="Conectores de salida activos">
+            <div class="conn-mock__head">
+              <span>Conectores de salida</span>
+              <span class="conn-mock__count">6 activos</span>
+            </div>
+            <div class="conn-row">
+              <span class="conn-row__ico"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18"/><path d="M3 15h18"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg></span>
+              <span class="conn-row__name">Marketplaces · Amazon</span>
+              <span class="conn-row__status">Activo</span>
+            </div>
+            <div class="conn-row">
+              <span class="conn-row__ico"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20l-2 13H4z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></span>
+              <span class="conn-row__name">E-commerce · Shopify</span>
+              <span class="conn-row__status">Activo</span>
+            </div>
+            <div class="conn-row">
+              <span class="conn-row__ico"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg></span>
+              <span class="conn-row__name">Catálogo impreso</span>
+              <span class="conn-row__status">Activo</span>
+            </div>
+            <div class="conn-row">
+              <span class="conn-row__ico"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
+              <span class="conn-row__name">Packaging e informes</span>
+              <span class="conn-row__status">Activo</span>
+            </div>
+            <div class="conn-row">
+              <span class="conn-row__ico"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+              <span class="conn-row__name">Analítica interna</span>
+              <span class="conn-row__status">Activo</span>
+            </div>
+            <div class="conn-row">
+              <span class="conn-row__ico"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+              <span class="conn-row__name">Brand Portal</span>
+              <span class="conn-row__status">Activo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [PLACEHOLDER CITA] cuando Alejandro consiga una frase REAL de Imprex, descomentar:
+      <blockquote class="pullquote reveal">
+        <p>«…cita textual del responsable de Imprex…»</p>
+        <cite>— Nombre, cargo · Imprex</cite>
+      </blockquote>
+      -->
+
+      <p class="case-kicker mt">El resultado</p>
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat__num">Amazon <em>→</em> propia</div>
+          <div class="stat__label">De «el mejor catálogo está en Amazon/Shopify» a una fuente de verdad propia.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">3-4 h <em>→</em> 0</div>
+          <div class="stat__label">De horas por canal a «conectas y lo tienes».</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">0 <em>→</em> 6</div>
+          <div class="stat__label">Conectores automáticos a canales, de cero a seis.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">El mismo día</div>
+          <div class="stat__label">Un producto nuevo llega a todos los canales a la vez.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ §5 CÓMO ARRANCAMOS — timeline numerada ════ -->
+  <section class="section section--alt">
+    <span class="sec-index" aria-hidden="true">05</span>
+    <div class="container reveal">
+      <p class="eyebrow">Cómo arrancamos</p>
+      <h2 class="h2">Trabajamos en tres tiempos.</h2>
+      <p class="lede">No solo ejecutamos: te acompañamos en cada decisión de negocio, de principio a fin.</p>
+      <div class="timeline">
+        <div class="tl-step reveal" style="--i:0">
+          <h4>Describir</h4>
+          <p>Entendemos cómo gestionas hoy tu catálogo: de dónde salen los datos, quién los toca, a qué canales llegan.</p>
+        </div>
+        <div class="tl-step reveal" style="--i:1">
+          <h4>Diagnosticar</h4>
+          <p>Identificamos dónde se pierde tiempo y dónde se cuelan los errores.</p>
+        </div>
+        <div class="tl-step reveal" style="--i:2">
+          <h4>Prescribir</h4>
+          <p>Te decimos qué montar, con qué herramienta y en qué orden — y lo implementamos.</p>
+        </div>
+      </div>
+      <p class="start-note">
+        El primer paso es una <strong>conversación para entender cómo gestionas hoy tu catálogo</strong>
+        y ver por dónde tendría sentido empezar.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════ §6 CADENA DE VALOR — banda oscura (clímax) ════ -->
+  <section class="section section--ink">
+    <span class="sec-index" aria-hidden="true">06</span>
+    <div class="container reveal">
+      <p class="eyebrow">El cuadro completo</p>
+      <h2 class="h2">Tu catálogo es un vértice. Los conectamos todos.</h2>
+      <p class="lede">Datos, Branding y Comunicación no son fases sueltas: son vértices conectados. El catálogo vive dentro de los datos.</p>
+
+      <div class="vertices">
+        <div class="vx-stage">
+          <svg class="vx-edges" viewBox="0 0 720 360" preserveAspectRatio="none" aria-hidden="true">
+            <polygon points="360,46 125,314 595,314" fill="none" stroke="rgba(247,245,240,0.22)" stroke-width="1.5" stroke-dasharray="6 7" />
+          </svg>
+          <div class="vx-node vx-node--top is-here">
+            <span class="vx-pill">Estás aquí</span>
+            <h4>Datos</h4>
+            <p>Catálogo, PIM y analítica. La información de tu negocio, fiable y lista para usar.</p>
+          </div>
+          <div class="vx-node vx-node--left">
+            <h4>Branding</h4>
+            <p>La identidad que convierte esos datos en una marca que diferencia.</p>
+          </div>
+          <div class="vx-node vx-node--right">
+            <h4>Comunicación</h4>
+            <p>Tu marca, distribuida donde están tus clientes.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="chain-foot">
+        No hace falta abordarlo todo a la vez. Empezamos por donde más te aporta hoy
+        —<strong>los datos</strong>— y conectamos los demás vértices a tu ritmo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════ CTA FINAL ════ -->
+  <section class="section">
+    <div class="container reveal">
+      <div class="cta-box">
+        <h2>¿Tu catálogo vive en quince sitios a la vez?</h2>
+        <p>Cuéntanos cómo gestionas hoy tu catálogo y vemos juntos por dónde empezar.</p>
+        <a href="../index.html#cta" class="btn-primary">Hablemos de tu catálogo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 Vértice Data S.L. Todos los derechos reservados.</div>
+      <div class="footer-tagline">
+        <span>Datos</span> · <span>Branding</span> · <span>Comunicación</span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html#cta">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+
+</html>

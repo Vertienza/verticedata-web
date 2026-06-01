@@ -2,5 +2,12 @@
 CLAUDE.md
 CONTEXTO_CONVERSACION.md
 
+# Imágenes y referencias UX (terceros) — solo para diseño, NO desplegar
+images_ref/
+ux_ref/
+
+# Guía interna de plantilla de servicios — NO desplegar a la web
+docs/
+
 # Sistema
 .DS_Store
