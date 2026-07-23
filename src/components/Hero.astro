@@ -1,8 +1,30 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
+// El vídeo de fondo es opcional a propósito: hasta que exista un reel real
+// (Alejandro lo cura a mano, ver conversación), el hero se queda en el
+// degradado de marca de siempre — sin <source> roto ni 404 en consola.
+// Para activarlo: soltar public/video/hero-reel.mp4 (+ opcional .webm) y
+// hacer build de nuevo. Ningún cambio de código.
+const videoDir = path.join(process.cwd(), 'public', 'video');
+const hasMp4 = fs.existsSync(path.join(videoDir, 'hero-reel.mp4'));
+const hasWebm = fs.existsSync(path.join(videoDir, 'hero-reel.webm'));
+const hasVideo = hasMp4 || hasWebm;
 ---
 
 <section class="section section--brand vz-hero" data-tone="dark" data-vz-section="hero">
   <div class="vz-hero__stage">
+    {hasVideo && (
+      <div class="vz-hero__video-layer" aria-hidden="true">
+        <video autoplay muted loop playsinline>
+          {hasWebm && <source src="/video/hero-reel.webm" type="video/webm" />}
+          {hasMp4 && <source src="/video/hero-reel.mp4" type="video/mp4" />}
+        </video>
+        <div class="vz-hero__scrim"></div>
+      </div>
+    )}
+
     <div class="container vz-hero__stage-inner">
       <div class="vz-hero__mark" aria-hidden="true">
         <img src="/logo/vertienza-logo-blanco.svg" alt="" />
@@ -15,6 +37,10 @@
         Con criterio y sin fórmulas: contenido que la mantiene viva, relevante y en primera línea.
       </p>
     </div>
+
+    <a href="#quienes-somos" class="vz-hero__scroll-cue">
+      Descubre más <span aria-hidden="true">↓</span>
+    </a>
   </div>
 
   <div class="vz-hero__frame container" data-reveal>
@@ -35,15 +61,92 @@
 
 <style>
   .vz-hero {
+    /* .section pone padding-top: 2xl heredado — anulado aquí porque
+       .vz-hero__stage ya gestiona su propio espaciado interno dentro
+       de sus 100svh (si no, el stage empieza 144px por debajo del
+       borde real del viewport y el scroll-cue calcula mal el "bottom"). */
+    padding-top: 0;
     padding-bottom: var(--vz-space-xl);
   }
 
   .vz-hero__stage {
+    position: relative;
     display: flex;
     align-items: center;
     min-height: 100vh;
     min-height: 100svh;
     padding-block: var(--vz-space-2xl);
+    overflow: hidden;
+  }
+
+  .vz-hero__video-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .vz-hero__video-layer video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vz-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(21 36 32 / 55%) 0%,
+      rgb(21 36 32 / 35%) 45%,
+      rgb(21 36 32 / 65%) 100%
+    );
+  }
+
+  .vz-hero__stage-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .vz-hero__scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(1.5rem, 4vh, 2.5rem);
+    transform: translateX(-50%);
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--vz-font-body);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--vz-cream-muted);
+    text-decoration: none;
+    opacity: 0;
+    animation: vz-rise-in 1s var(--vz-ease-out) 1s forwards;
+    transition: color 0.2s ease;
+  }
+
+  .vz-hero__scroll-cue:hover {
+    color: var(--vz-cream);
+  }
+
+  .vz-hero__scroll-cue span {
+    display: inline-block;
+    animation: vz-bob 1.8s ease-in-out infinite;
+  }
+
+  @keyframes vz-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.2em);
+    }
   }
 
   .vz-hero__mark {
@@ -159,10 +262,19 @@
   @media (prefers-reduced-motion: reduce) {
     .vz-hero__mark,
     .vz-hero__title,
-    .vz-hero__lede {
+    .vz-hero__lede,
+    .vz-hero__scroll-cue {
       opacity: 1;
       transform: none;
       animation: none;
+    }
+
+    .vz-hero__scroll-cue span {
+      animation: none;
+    }
+
+    .vz-hero__video-layer video {
+      display: none;
     }
 
     .vz-hero__media-fallback,
@@ -172,6 +284,12 @@
   }
 
   @media (max-width: 640px) {
+    /* Choca con el Escríbenos fijo del marco en pantallas estrechas —
+       en móvil el gesto de seguir bajando ya es obvio sin la pista. */
+    .vz-hero__scroll-cue {
+      display: none;
+    }
+
     .vz-hero__media {
       aspect-ratio: 4 / 5;
     }
