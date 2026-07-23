@@ -1,0 +1,40 @@
+---
+// Molde tomado de madeinhaus.com (identidad+sede → qué hacéis → para qué),
+// con vocabulario propio de Vertienza ya establecido en el resto de la página
+// ("voz, contenido y criterio" — ver ComoLoResolvemos.astro). Draft de copy,
+// pendiente de validar con el equipo — no es texto de Sergio.
+---
+
+<section id="quienes-somos" class="section section--cream vz-valueprop" data-tone="light" data-vz-section="valueprop">
+  <div class="container vz-valueprop__inner">
+    <span class="eyebrow" data-reveal>Quiénes somos</span>
+    <p class="vz-valueprop__copy" data-reveal data-reveal-delay="1">
+      Vertienza es un estudio de branded content con sede en Madrid que trabaja la voz, el
+      contenido y el criterio de una marca para que <em>siga en la conversación</em>. No con
+      fórmulas ni tendencias prestadas, sino con una identidad que es solo suya.
+    </p>
+  </div>
+</section>
+
+<style>
+  .vz-valueprop__inner {
+    text-align: center;
+  }
+
+  .vz-valueprop__copy {
+    font-family: var(--vz-font-body);
+    font-weight: 400;
+    font-size: clamp(1.375rem, 1.05rem + 1.6vw, 2.25rem);
+    line-height: 1.42;
+    letter-spacing: -0.01em;
+    max-width: 30ch;
+    margin: 0 auto;
+    color: var(--vz-ink);
+  }
+
+  .vz-valueprop__copy em {
+    font-family: var(--vz-font-display);
+    font-style: italic;
+    color: var(--vz-brand-600);
+  }
+</style>

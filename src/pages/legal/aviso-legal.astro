@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Aviso legal y privacidad — Vertienza"
+  description="Aviso legal y política de privacidad de Vertienza."
+>
+  <section class="section section--cream" data-tone="light">
+    <div class="container vz-legal">
+      <h1 class="h-display h-display--section">Aviso legal y privacidad</h1>
+
+      <!--
+        Vertienza no tiene razón social constituida a día de hoy (4 autónomos, pacto de
+        socios pendiente — ver vertice-main/MIGRACION_VERTIENZA.md). El responsable del
+        tratamiento es Alejandro Campos Lamas como autónomo, no una entidad "Vertienza".
+        Cuando exista sociedad, actualizar este bloque y el registro de actividades de
+        tratamiento correspondiente.
+
+        PENDIENTE: número de apartado de correos (Alejandro prefiere apartado postal a
+        domicilio particular — falta el dato concreto).
+      -->
+      <div class="vz-legal__body">
+        <h2>Responsable del tratamiento</h2>
+        <p>
+          Alejandro Campos Lamas, NIF 32839901H, actuando como autónomo (Vertienza es una
+          marca en solicitud ante la OEPM, expediente M4391997, sin sociedad constituida
+          todavía).
+        </p>
+        <p>
+          Domicilio a efectos de notificaciones: [PENDIENTE — apartado de correos].
+        </p>
+        <p>Email de contacto: <a href="mailto:alejandro@vertienza.com">alejandro@vertienza.com</a>.</p>
+
+        <h2>Finalidad</h2>
+        <p>
+          Los datos que nos facilitas a través del formulario de contacto (nombre, email y el
+          mensaje que escribas) se usan únicamente para responder a tu consulta sobre nuestros
+          servicios. No los usamos para ninguna otra finalidad ni los cedemos a terceros fuera
+          de los proveedores técnicos necesarios para operar este formulario (Netlify, como
+          alojamiento y procesamiento del envío).
+        </p>
+
+        <h2>Legitimación</h2>
+        <p>Tu consentimiento, al marcar la casilla del formulario y enviarlo.</p>
+
+        <h2>Conservación</h2>
+        <p>
+          Conservamos los datos el tiempo necesario para atender tu consulta y, salvo que nos
+          pidas lo contrario, mientras exista una relación comercial o de interés legítimo con
+          nosotros.
+        </p>
+
+        <h2>Tus derechos</h2>
+        <p>
+          Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición,
+          limitación y portabilidad escribiéndonos a través del propio formulario de contacto.
+        </p>
+      </div>
+
+      <a class="btn-pill" href="/">Volver al inicio</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .vz-legal {
+    max-width: 68ch;
+  }
+
+  .vz-legal__body {
+    margin-block: var(--vz-space-lg);
+    display: grid;
+    gap: var(--vz-space-sm);
+  }
+
+  .vz-legal__body h2 {
+    font-family: var(--vz-font-body);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    margin: var(--vz-space-sm) 0 0;
+  }
+
+  .vz-legal__body p {
+    margin: 0;
+    color: var(--vz-ink-muted);
+  }
+
+  .vz-legal__body a {
+    color: var(--vz-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

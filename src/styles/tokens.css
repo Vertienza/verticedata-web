@@ -1,0 +1,38 @@
+/*
+  Tokens de marca Vertienza — traducidos 1:1 desde la fuente canónica:
+  vertice-main/Marca/vertienza-design-tokens.json (Mini Brandbook v1, Sergio, julio 2026)
+
+  NO editar valores aquí sin editar antes el JSON del cerebro — ese archivo manda.
+  Si algo no cuadra entre este fichero y el JSON, el JSON tiene razón.
+*/
+
+:root {
+  /* Color — paleta (ver % de uso de superficie en el JSON) */
+  --vz-brand-600: #3a5f51; /* Verde Vertienza — dominante, 40% */
+  --vz-cream: #f4f0e9; /* Crema papel — base, 35% */
+  --vz-mist: #e3e7e1; /* Verde roto — aire, 15% */
+  --vz-ink: #152420; /* Tinta verde-negra — texto, 7% */
+  --vz-copper: #c07b5b; /* Cobre apagado — acento. Nunca > 5% de superficie, nunca como fondo */
+
+  /* Derivados de opacidad — NO tokens de marca, solo variantes tonales para texto secundario */
+  --vz-cream-muted: rgb(244 240 233 / 82%); /* cuerpo de texto sobre fondo verde */
+  --vz-ink-muted: rgb(21 36 32 / 70%); /* cuerpo de texto sobre fondo crema/mist */
+
+  /* Tipografía */
+  --vz-font-display: 'C059', Georgia, 'Times New Roman', serif; /* titulares, acentos itálica */
+  --vz-font-body: 'Poppins', system-ui, sans-serif; /* cuerpo, interfaz, datos */
+
+  /* Espaciado — NO viene del brandbook (no lo cubre), definido aquí al maquetar */
+  --vz-space-2xs: 0.5rem;
+  --vz-space-xs: 0.75rem;
+  --vz-space-sm: 1.25rem;
+  --vz-space-md: 2rem;
+  --vz-space-lg: 3.5rem;
+  --vz-space-xl: 6rem;
+  --vz-space-2xl: 9rem;
+
+  /* Layout */
+  --vz-container-max: 1180px;
+  --vz-container-pad: clamp(1.25rem, 4vw, 4rem);
+  --vz-radius-pill: 999px;
+}

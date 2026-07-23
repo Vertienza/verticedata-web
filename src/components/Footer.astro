@@ -1,0 +1,59 @@
+---
+import BrandMark from './BrandMark.astro';
+---
+
+<footer class="vz-footer" data-tone="dark">
+  <div class="container vz-footer__inner">
+    <BrandMark variant="cream" class="vz-footer__mark" />
+    <div class="vz-footer__meta">
+      <span>&copy; {new Date().getFullYear()} Vertienza. Estudio de branded content.</span>
+      <a href="/legal/aviso-legal">Aviso legal y privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .vz-footer {
+    background: var(--vz-ink);
+    color: var(--vz-cream-muted);
+    padding-block: var(--vz-space-lg);
+  }
+
+  .vz-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--vz-space-md);
+  }
+
+  .vz-footer :global(.vz-footer__mark) {
+    width: clamp(6rem, 10vw, 7.5rem);
+    margin-bottom: 0;
+  }
+
+  .vz-footer__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--vz-space-2xs);
+    font-size: 0.875rem;
+  }
+
+  .vz-footer__meta a {
+    color: var(--vz-cream);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .vz-footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .vz-footer__meta {
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,190 @@
+---
+---
+
+<section class="section section--cream vz-cta" id="contacto" data-tone="light" data-vz-section="cta">
+  <div class="container vz-cta__inner">
+    <h2 class="h-display h-display--italic h-display--section" data-reveal>¿Hablamos de tu marca?</h2>
+    <p class="lede vz-cta__lede" data-reveal data-reveal-delay="1">
+      Cuéntanos en qué punto está y te decimos qué haríamos con ella.
+    </p>
+
+    <form
+      name="contacto"
+      method="POST"
+      action="/gracias"
+      data-netlify="true"
+      data-netlify-honeypot="empresa-web"
+      class="vz-form"
+      data-reveal
+      data-reveal-delay="2"
+    >
+      <input type="hidden" name="form-name" value="contacto" />
+
+      <!-- Honeypot: campo señuelo para bots, oculto a personas -->
+      <p class="sr-only">
+        <label>No rellenes esto si eres humano: <input name="empresa-web" tabindex="-1" autocomplete="off" /></label>
+      </p>
+
+      <!-- UTM ocultos — rellenados por JS desde la URL/sessionStorage al cargar la página -->
+      <input type="hidden" name="utm_source" data-utm="utm_source" />
+      <input type="hidden" name="utm_medium" data-utm="utm_medium" />
+      <input type="hidden" name="utm_campaign" data-utm="utm_campaign" />
+      <input type="hidden" name="utm_term" data-utm="utm_term" />
+      <input type="hidden" name="utm_content" data-utm="utm_content" />
+      <input type="hidden" name="referrer" data-utm="referrer" />
+
+      <div class="vz-form__row">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required />
+      </div>
+
+      <div class="vz-form__row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required />
+      </div>
+
+      <div class="vz-form__row">
+        <label for="mensaje">Cuéntanos en qué punto está tu marca</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+      </div>
+
+      <div class="vz-form__consent">
+        <input id="consentimiento" name="consentimiento" type="checkbox" required />
+        <label for="consentimiento">
+          He leído y acepto el <a href="/legal/aviso-legal">aviso legal y la política de privacidad</a>.
+        </label>
+      </div>
+
+      <button type="submit" class="btn-pill">
+        Escríbenos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+<script>
+  const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  const STORAGE_KEY = 'vz_attribution';
+
+  function readStoredAttribution() {
+    try {
+      return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}');
+    } catch {
+      return {};
+    }
+  }
+
+  function captureAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    const stored = readStoredAttribution();
+    let changed = false;
+
+    for (const key of UTM_KEYS) {
+      const value = params.get(key);
+      if (value) {
+        stored[key] = value;
+        changed = true;
+      }
+    }
+
+    if (!stored.referrer && document.referrer) {
+      stored.referrer = document.referrer;
+      changed = true;
+    }
+
+    if (changed) {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+    }
+
+    return stored;
+  }
+
+  const attribution = captureAttribution();
+
+  document.querySelectorAll('input[data-utm]').forEach((input) => {
+    const key = input.dataset.utm;
+    if (attribution[key]) input.value = attribution[key];
+  });
+</script>
+
+<style>
+  .vz-cta__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vz-cta__lede {
+    max-width: 40ch;
+    margin: var(--vz-space-sm) 0 var(--vz-space-xl);
+  }
+
+  .vz-form {
+    width: 100%;
+    max-width: 34rem;
+    display: grid;
+    gap: var(--vz-space-sm);
+    text-align: left;
+  }
+
+  .vz-form__row {
+    display: grid;
+    gap: 0.4em;
+  }
+
+  .vz-form__row label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .vz-form__row input,
+  .vz-form__row textarea {
+    font-family: var(--vz-font-body);
+    font-size: 1rem;
+    padding: 0.75em 0.9em;
+    border: 1.5px solid var(--vz-ink-muted);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--vz-ink);
+    resize: vertical;
+  }
+
+  .vz-form__row input:focus,
+  .vz-form__row textarea:focus {
+    outline: 2px solid var(--vz-brand-600);
+    outline-offset: 1px;
+  }
+
+  .vz-form__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6em;
+    font-size: 0.8125rem;
+    color: var(--vz-ink-muted);
+  }
+
+  .vz-form__consent input {
+    margin-top: 0.2em;
+  }
+
+  .vz-form__consent a {
+    color: var(--vz-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .vz-form .btn-pill {
+    justify-self: start;
+    color: var(--vz-ink);
+    margin-top: var(--vz-space-2xs);
+  }
+
+  @media (max-width: 640px) {
+    .vz-form .btn-pill {
+      justify-self: stretch;
+      justify-content: center;
+    }
+  }
+</style>

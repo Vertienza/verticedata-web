@@ -1,0 +1,17 @@
+---
+// Wordmark oficial como SVG — nunca tipografiado en vivo (regla de marca: MB Empire 01 solo como SVG).
+// variant "cream": logo blanco, para fondos oscuros (--vz-brand-600, --vz-ink).
+// variant "ink": logo negro, para fondos claros (--vz-cream, --vz-mist).
+interface Props {
+  variant?: 'cream' | 'ink';
+  href?: string;
+  class?: string;
+}
+
+const { variant = 'ink', href = '/', class: className } = Astro.props;
+const src = variant === 'cream' ? '/logo/vertienza-logo-blanco.svg' : '/logo/vertienza-logo-negro.svg';
+---
+
+<a href={href} class:list={['section-anchor', className]} aria-label="Vertienza — inicio">
+  <img src={src} alt="Vertienza" width="399" height="68" />
+</a>
