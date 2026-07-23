@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BrandMark from '../components/BrandMark.astro';
+---
+
+<Layout title="Página no encontrada — Vertienza" description="Esta página no existe.">
+  <section class="section section--cream vz-404">
+    <div class="container vz-404__inner">
+      <BrandMark variant="ink" />
+      <h1 class="h-display h-display--italic h-display--section">Esto no está aquí.</h1>
+      <p class="lede">La página que buscas no existe o se ha movido.</p>
+      <a class="btn-pill" href="/">Volver al inicio</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .vz-404 {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .vz-404__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--vz-space-sm);
+  }
+
+  .vz-404 .section-anchor {
+    margin-bottom: 0;
+  }
+</style>

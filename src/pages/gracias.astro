@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BrandMark from '../components/BrandMark.astro';
+---
+
+<Layout title="Gracias — Vertienza" description="Hemos recibido tu mensaje.">
+  <section class="section section--cream vz-gracias">
+    <div class="container vz-gracias__inner">
+      <BrandMark variant="ink" />
+      <h1 class="h-display h-display--italic h-display--section">Gracias.</h1>
+      <p class="lede">
+        Hemos recibido tu mensaje. Lo leemos y te contestamos por email en cuanto podamos.
+      </p>
+      <a class="btn-pill" href="/">Volver al inicio</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .vz-gracias {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .vz-gracias__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--vz-space-sm);
+  }
+
+  .vz-gracias .section-anchor {
+    margin-bottom: 0;
+  }
+</style>

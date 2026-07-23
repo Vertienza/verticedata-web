@@ -1,0 +1,31 @@
+---
+import BrandMark from './BrandMark.astro';
+---
+
+<section class="section section--brand vz-enfoque" data-vz-section="enfoque">
+  <div class="container">
+    <BrandMark variant="cream" />
+
+    <span class="eyebrow eyebrow--caps">Nuestro enfoque</span>
+    <h2 class="h-display h-display--section vz-enfoque__title">
+      No seguimos las tendencias.<br />creamos la tuya
+    </h2>
+
+    <p class="lede">
+      Una marca no es un logotipo bonito ni un calendario lleno de posts. Es un propósito con voz.
+      Trabajamos lo que hay debajo antes de tocar lo de fuera, porque el resultado bonito no es el
+      objetivo: es la consecuencia de haber hecho bien lo difícil.
+    </p>
+  </div>
+</section>
+
+<style>
+  .vz-enfoque {
+    padding-block: var(--vz-space-2xl) calc(var(--vz-space-2xl) + var(--vz-space-lg));
+  }
+
+  .vz-enfoque__title {
+    max-width: 22ch;
+    margin-bottom: var(--vz-space-lg);
+  }
+</style>

@@ -1,0 +1,123 @@
+---
+import BrandMark from './BrandMark.astro';
+---
+
+<section class="section section--brand vz-hero" data-vz-section="hero">
+  <div class="container">
+    <BrandMark variant="cream" />
+
+    <h1 class="h-display h-display--italic h-display--hero vz-hero__title">
+      Le damos voz a tu marca.
+    </h1>
+    <p class="lede vz-hero__lede">
+      Con criterio y sin fórmulas: contenido que la mantiene viva, relevante y en su sitio — delante.
+    </p>
+  </div>
+
+  <div class="vz-hero__frame container">
+    <a class="vz-hero__media" href="#contacto" aria-label="Conoce nuestros proyectos">
+      <!-- Placeholder de proyecto real — sustituir por fotografía propia antes de publicar en producción -->
+      <div class="vz-hero__media-fallback" role="img" aria-label="Espacio reservado para fotografía de proyecto">
+        <span class="vz-hero__media-tag">Foto de proyecto — pendiente</span>
+      </div>
+      <span class="vz-hero__cta">
+        Conoce nuestros proyectos
+      </span>
+      <span class="vz-hero__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .vz-hero {
+    padding-bottom: var(--vz-space-xl);
+  }
+
+  .vz-hero__title {
+    max-width: 16ch;
+    margin-bottom: var(--vz-space-sm);
+  }
+
+  .vz-hero__lede {
+    margin: 0;
+  }
+
+  .vz-hero__frame {
+    margin-top: var(--vz-space-xl);
+  }
+
+  .vz-hero__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--vz-cream);
+  }
+
+  .vz-hero__media-fallback {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(120% 140% at 15% 15%, rgb(244 240 233 / 14%), transparent 55%),
+      linear-gradient(155deg, var(--vz-brand-600) 0%, #24413a 55%, var(--vz-ink) 100%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: var(--vz-space-sm);
+  }
+
+  .vz-hero__media-tag {
+    font-family: var(--vz-font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--vz-ink);
+    background: var(--vz-copper);
+    padding: 0.35em 0.75em;
+    border-radius: var(--vz-radius-pill);
+  }
+
+  .vz-hero__cta {
+    position: absolute;
+    left: var(--vz-space-md);
+    bottom: var(--vz-space-md);
+    font-family: var(--vz-font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    text-shadow: 0 1px 12px rgb(0 0 0 / 25%);
+  }
+
+  .vz-hero__arrow {
+    position: absolute;
+    top: var(--vz-space-md);
+    right: var(--vz-space-md);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid rgb(244 240 233 / 55%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vz-hero__arrow svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  @media (max-width: 640px) {
+    .vz-hero__media {
+      aspect-ratio: 4 / 5;
+    }
+
+    .vz-hero__cta {
+      font-size: 0.9375rem;
+      left: var(--vz-space-sm);
+      bottom: var(--vz-space-sm);
+    }
+  }
+</style>

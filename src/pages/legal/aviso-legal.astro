@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BrandMark from '../../components/BrandMark.astro';
+---
+
+<Layout
+  title="Aviso legal y privacidad — Vertienza"
+  description="Aviso legal y política de privacidad de Vertienza."
+>
+  <section class="section section--cream">
+    <div class="container vz-legal">
+      <BrandMark variant="ink" />
+      <h1 class="h-display h-display--section">Aviso legal y privacidad</h1>
+
+      <!--
+        PENDIENTE (bloqueante antes de publicar en producción, no antes de Deploy Preview):
+        Vertienza no tiene razón social constituida a día de hoy (4 autónomos, pacto de
+        socios pendiente — ver vertice-main/MIGRACION_VERTIENZA.md). Esta página NO debe
+        llevar datos de responsable del tratamiento inventados. Rellenar con datos reales
+        (autónomo/entidad, NIF/CIF, domicilio, email de contacto) en cuanto existan.
+      -->
+      <div class="vz-legal__body">
+        <h2>Responsable del tratamiento</h2>
+        <p>
+          [PENDIENTE — Vertienza no tiene razón social constituida todavía. Se completará con
+          los datos del responsable (autónomo o entidad, NIF/CIF, domicilio y email de
+          contacto) antes de la publicación en producción.]
+        </p>
+
+        <h2>Finalidad</h2>
+        <p>
+          Los datos que nos facilitas a través del formulario de contacto (nombre, email y el
+          mensaje que escribas) se usan únicamente para responder a tu consulta sobre nuestros
+          servicios. No los usamos para ninguna otra finalidad ni los cedemos a terceros fuera
+          de los proveedores técnicos necesarios para operar este formulario (Netlify, como
+          alojamiento y procesamiento del envío).
+        </p>
+
+        <h2>Legitimación</h2>
+        <p>Tu consentimiento, al marcar la casilla del formulario y enviarlo.</p>
+
+        <h2>Conservación</h2>
+        <p>
+          Conservamos los datos el tiempo necesario para atender tu consulta y, salvo que nos
+          pidas lo contrario, mientras exista una relación comercial o de interés legítimo con
+          nosotros.
+        </p>
+
+        <h2>Tus derechos</h2>
+        <p>
+          Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición,
+          limitación y portabilidad escribiéndonos a través del propio formulario de contacto.
+        </p>
+      </div>
+
+      <a class="btn-pill" href="/">Volver al inicio</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .vz-legal {
+    max-width: 68ch;
+  }
+
+  .vz-legal__body {
+    margin-block: var(--vz-space-lg);
+    display: grid;
+    gap: var(--vz-space-sm);
+  }
+
+  .vz-legal__body h2 {
+    font-family: var(--vz-font-body);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    margin: var(--vz-space-sm) 0 0;
+  }
+
+  .vz-legal__body p {
+    margin: 0;
+    color: var(--vz-ink-muted);
+  }
+</style>

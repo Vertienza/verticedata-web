@@ -6,8 +6,28 @@ CONTEXTO_CONVERSACION.md
 images_ref/
 ux_ref/
 
-# Guía interna de plantilla de servicios — NO desplegar a la web
+# Guía interna (docs internos, NO desplegar a la web)
 docs/
 
 # Sistema
 .DS_Store
+
+# Astro — build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# entorno
+.env
+.env.production
+
+# JetBrains
+.idea/

@@ -1,0 +1,89 @@
+---
+import BrandMark from './BrandMark.astro';
+
+const columnas = [
+  {
+    numero: '01',
+    titulo: 'Voz y territorio',
+    texto:
+      'Definimos cómo suena, cómo se ve y de qué habla tu marca. El ángulo donde es diferente y aporta valor real a su audiencia.',
+  },
+  {
+    numero: '02',
+    titulo: 'Contenido con valor',
+    texto:
+      'Nada de relleno ni tendencias del día. Cada pieza dice algo, y trabaja en un punto concreto del camino: que te descubran, que se queden, que te elijan.',
+  },
+  {
+    numero: '03',
+    titulo: 'Criterio y datos',
+    texto:
+      'Tu experiencia es parte del valor de tu marca. La ponemos junto a lo que dicen los datos de tu sector para decidir con criterio, no a ciegas.',
+  },
+];
+---
+
+<section class="section section--mist" data-vz-section="como-resolvemos">
+  <div class="container">
+    <BrandMark variant="ink" />
+
+    <span class="eyebrow">Cómo lo resolvemos</span>
+    <h2 class="h-display h-display--italic h-display--section vz-resolvemos__title">
+      voz, contenido y <span class="text-brand">criterio</span>
+    </h2>
+
+    <div class="vz-resolvemos__grid">
+      {columnas.map((col) => (
+        <div class="vz-resolvemos__col">
+          <span class="vz-resolvemos__num">{col.numero}</span>
+          <h3 class="vz-resolvemos__col-title">{col.titulo}</h3>
+          <p>{col.texto}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .vz-resolvemos__title {
+    margin-bottom: var(--vz-space-xl);
+  }
+
+  .text-brand {
+    color: var(--vz-brand-600);
+  }
+
+  .vz-resolvemos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--vz-space-lg);
+  }
+
+  .vz-resolvemos__num {
+    display: block;
+    font-family: var(--vz-font-display);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--vz-copper);
+    margin-bottom: var(--vz-space-2xs);
+  }
+
+  .vz-resolvemos__col-title {
+    font-family: var(--vz-font-body);
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 0 0 var(--vz-space-2xs);
+  }
+
+  .vz-resolvemos__col p {
+    margin: 0;
+    max-width: 32ch;
+  }
+
+  @media (max-width: 860px) {
+    .vz-resolvemos__grid {
+      grid-template-columns: 1fr;
+      gap: var(--vz-space-md);
+    }
+  }
+</style>
