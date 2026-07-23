@@ -1,0 +1,150 @@
+---
+// Marco fijo persistente — se queda quieto mientras el fondo cambia debajo (verde/crema).
+// Esto es lo que da la sensación de "canvas continuo" en vez de secciones con corte duro
+// (patrón visto en griflan.com / madeinhaus.com: logo + utilidades de esquina fijos).
+// El tono (claro/oscuro) lo decide un IntersectionObserver sobre [data-tone] — ver Layout.astro.
+---
+
+<div class="vz-frame" id="vz-frame" data-tone="dark">
+  <a href="/" class="vz-frame__mark" aria-label="Vertienza — inicio">
+    <img src="/logo/vertienza-logo-blanco.svg" alt="Vertienza" class="vz-frame__logo vz-frame__logo--cream" />
+    <img src="/logo/vertienza-logo-negro.svg" alt="Vertienza" class="vz-frame__logo vz-frame__logo--ink" />
+  </a>
+
+  <span class="vz-frame__label" aria-hidden="true">Estudio de branded content</span>
+
+  <span class="vz-frame__loc" aria-hidden="true">Madrid</span>
+
+  <a href="#contacto" class="vz-frame__cta">Escríbenos</a>
+</div>
+
+<style>
+  .vz-frame {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 40;
+    padding: clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 3vw, 2.5rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: space-between;
+  }
+
+  .vz-frame__mark {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    justify-self: start;
+    width: clamp(4.5rem, 7vw, 5.5rem);
+    pointer-events: auto;
+    position: relative;
+  }
+
+  .vz-frame__logo {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.4s ease;
+  }
+
+  .vz-frame__logo--ink {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  .vz-frame[data-tone='light'] .vz-frame__logo--cream {
+    opacity: 0;
+  }
+
+  .vz-frame[data-tone='light'] .vz-frame__logo--ink {
+    opacity: 1;
+  }
+
+  .vz-frame__label {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    justify-self: end;
+    text-align: right;
+    font-family: var(--vz-font-body);
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--vz-cream-muted);
+    max-width: 14ch;
+    transition: color 0.4s ease;
+  }
+
+  .vz-frame[data-tone='light'] .vz-frame__label {
+    color: var(--vz-ink-muted);
+  }
+
+  .vz-frame__loc {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    justify-self: start;
+    font-family: var(--vz-font-body);
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    color: var(--vz-cream-muted);
+    transition: color 0.4s ease;
+  }
+
+  .vz-frame[data-tone='light'] .vz-frame__loc {
+    color: var(--vz-ink-muted);
+  }
+
+  .vz-frame__cta {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+    justify-self: end;
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--vz-cream-muted);
+    border-radius: var(--vz-radius-pill);
+    padding: 0.55em 1em;
+    font-family: var(--vz-font-body);
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: var(--vz-cream);
+    background: rgb(21 36 32 / 12%);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.4s ease;
+  }
+
+  .vz-frame__cta:hover {
+    background: var(--vz-cream);
+    color: var(--vz-brand-600);
+  }
+
+  .vz-frame[data-tone='light'] .vz-frame__cta {
+    color: var(--vz-ink);
+    border-color: var(--vz-ink-muted);
+    background: rgb(244 240 233 / 45%);
+  }
+
+  .vz-frame[data-tone='light'] .vz-frame__cta:hover {
+    background: var(--vz-ink);
+    color: var(--vz-cream);
+  }
+
+  /* Mobile: se reduce a marca + CTA, fuera el reloj/label de utilidad (riesgo de choque
+     con contenido cuando una escena es más alta que la pantalla) */
+  @media (max-width: 640px) {
+    .vz-frame__label,
+    .vz-frame__loc {
+      display: none;
+    }
+
+    .vz-frame__mark {
+      width: 4rem;
+    }
+  }
+</style>

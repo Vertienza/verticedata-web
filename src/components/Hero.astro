@@ -1,13 +1,12 @@
 ---
-import HeroIntro from './HeroIntro.astro';
-import CinemaBackdrop from './CinemaBackdrop.astro';
 ---
 
-<section class="section section--brand vz-hero" data-vz-section="hero">
-  <div class="vz-hero__cinema">
-    <CinemaBackdrop />
-    <div class="container vz-hero__cinema-inner">
-      <HeroIntro />
+<section class="section section--brand vz-hero" data-tone="dark" data-vz-section="hero">
+  <div class="vz-hero__stage">
+    <div class="container vz-hero__stage-inner">
+      <div class="vz-hero__mark" aria-hidden="true">
+        <img src="/logo/vertienza-logo-blanco.svg" alt="" />
+      </div>
 
       <h1 class="h-display h-display--italic h-display--hero vz-hero__title">
         Le damos voz a tu marca.
@@ -20,7 +19,7 @@ import CinemaBackdrop from './CinemaBackdrop.astro';
 
   <div class="vz-hero__frame container" data-reveal>
     <a class="vz-hero__media" href="#contacto" aria-label="Conoce nuestros proyectos">
-      <!-- Placeholder de proyecto real: sustituir por fotografía propia antes de publicar en producción -->
+      <!-- Placeholder de proyecto real: sustituir por fotografía/vídeo propio antes de publicar en producción -->
       <div class="vz-hero__media-fallback" role="img" aria-label="Espacio reservado para fotografía de proyecto">
         <span class="vz-hero__media-tag">Foto de proyecto pendiente</span>
       </div>
@@ -39,8 +38,7 @@ import CinemaBackdrop from './CinemaBackdrop.astro';
     padding-bottom: var(--vz-space-xl);
   }
 
-  .vz-hero__cinema {
-    position: relative;
+  .vz-hero__stage {
     display: flex;
     align-items: center;
     min-height: 100vh;
@@ -48,22 +46,33 @@ import CinemaBackdrop from './CinemaBackdrop.astro';
     padding-block: var(--vz-space-2xl);
   }
 
-  .vz-hero__cinema-inner {
-    position: relative;
-    z-index: 1;
+  .vz-hero__mark {
+    width: clamp(11rem, 20vw, 15rem);
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    transform: translateY(0.6rem);
+    animation: vz-rise-in 1s var(--vz-ease-out) 0.2s forwards;
+  }
+
+  .vz-hero__mark img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .vz-hero__title {
     max-width: 16ch;
-    margin: var(--vz-space-lg) 0 var(--vz-space-sm);
+    margin-bottom: var(--vz-space-sm);
     opacity: 0;
-    animation: vz-rise-in 0.9s var(--vz-ease-out) 3.3s forwards;
+    transform: translateY(0.6rem);
+    animation: vz-rise-in 1s var(--vz-ease-out) 0.45s forwards;
   }
 
   .vz-hero__lede {
     margin: 0;
     opacity: 0;
-    animation: vz-rise-in 0.9s var(--vz-ease-out) 3.5s forwards;
+    transform: translateY(0.6rem);
+    animation: vz-rise-in 1s var(--vz-ease-out) 0.65s forwards;
   }
 
   .vz-hero__frame {
@@ -148,9 +157,11 @@ import CinemaBackdrop from './CinemaBackdrop.astro';
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .vz-hero__mark,
     .vz-hero__title,
     .vz-hero__lede {
       opacity: 1;
+      transform: none;
       animation: none;
     }
 
