@@ -27,14 +27,14 @@ const columnas = [
   <div class="container">
     <BrandMark variant="ink" />
 
-    <span class="eyebrow">Cómo lo resolvemos</span>
-    <h2 class="h-display h-display--italic h-display--section vz-resolvemos__title">
+    <span class="eyebrow" data-reveal>Cómo lo resolvemos</span>
+    <h2 class="h-display h-display--italic h-display--section vz-resolvemos__title" data-reveal data-reveal-delay="1">
       voz, contenido y <span class="text-brand">criterio</span>
     </h2>
 
     <div class="vz-resolvemos__grid">
-      {columnas.map((col) => (
-        <div class="vz-resolvemos__col">
+      {columnas.map((col, i) => (
+        <div class="vz-resolvemos__col" data-reveal data-reveal-delay={String(Math.min(i, 3))}>
           <span class="vz-resolvemos__num">{col.numero}</span>
           <h3 class="vz-resolvemos__col-title">{col.titulo}</h3>
           <p>{col.texto}</p>

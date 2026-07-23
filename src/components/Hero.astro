@@ -1,20 +1,24 @@
 ---
 import HeroIntro from './HeroIntro.astro';
+import CinemaBackdrop from './CinemaBackdrop.astro';
 ---
 
 <section class="section section--brand vz-hero" data-vz-section="hero">
-  <div class="container">
-    <HeroIntro />
+  <div class="vz-hero__cinema">
+    <CinemaBackdrop />
+    <div class="container vz-hero__cinema-inner">
+      <HeroIntro />
 
-    <h1 class="h-display h-display--italic h-display--hero vz-hero__title">
-      Le damos voz a tu marca.
-    </h1>
-    <p class="lede vz-hero__lede">
-      Con criterio y sin fórmulas: contenido que la mantiene viva, relevante y en primera línea.
-    </p>
+      <h1 class="h-display h-display--italic h-display--hero vz-hero__title">
+        Le damos voz a tu marca.
+      </h1>
+      <p class="lede vz-hero__lede">
+        Con criterio y sin fórmulas: contenido que la mantiene viva, relevante y en primera línea.
+      </p>
+    </div>
   </div>
 
-  <div class="vz-hero__frame container">
+  <div class="vz-hero__frame container" data-reveal>
     <a class="vz-hero__media" href="#contacto" aria-label="Conoce nuestros proyectos">
       <!-- Placeholder de proyecto real: sustituir por fotografía propia antes de publicar en producción -->
       <div class="vz-hero__media-fallback" role="img" aria-label="Espacio reservado para fotografía de proyecto">
@@ -35,13 +39,31 @@ import HeroIntro from './HeroIntro.astro';
     padding-bottom: var(--vz-space-xl);
   }
 
+  .vz-hero__cinema {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block: var(--vz-space-2xl);
+  }
+
+  .vz-hero__cinema-inner {
+    position: relative;
+    z-index: 1;
+  }
+
   .vz-hero__title {
     max-width: 16ch;
-    margin-bottom: var(--vz-space-sm);
+    margin: var(--vz-space-lg) 0 var(--vz-space-sm);
+    opacity: 0;
+    animation: vz-rise-in 0.9s var(--vz-ease-out) 3.3s forwards;
   }
 
   .vz-hero__lede {
     margin: 0;
+    opacity: 0;
+    animation: vz-rise-in 0.9s var(--vz-ease-out) 3.5s forwards;
   }
 
   .vz-hero__frame {
@@ -68,6 +90,20 @@ import HeroIntro from './HeroIntro.astro';
     align-items: flex-start;
     justify-content: flex-end;
     padding: var(--vz-space-sm);
+    transition: transform 0.6s var(--vz-ease-out);
+  }
+
+  .vz-hero__media:hover .vz-hero__media-fallback {
+    transform: scale(1.03);
+  }
+
+  .vz-hero__media:hover .vz-hero__arrow {
+    background: var(--vz-cream);
+    color: var(--vz-brand-600);
+  }
+
+  .vz-hero__media:hover .vz-hero__arrow svg {
+    transform: translateX(0.15em);
   }
 
   .vz-hero__media-tag {
@@ -102,11 +138,26 @@ import HeroIntro from './HeroIntro.astro';
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .vz-hero__arrow svg {
     width: 1.1rem;
     height: 1.1rem;
+    transition: transform 0.3s var(--vz-ease-out);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vz-hero__title,
+    .vz-hero__lede {
+      opacity: 1;
+      animation: none;
+    }
+
+    .vz-hero__media-fallback,
+    .vz-hero__arrow svg {
+      transition: none;
+    }
   }
 
   @media (max-width: 640px) {

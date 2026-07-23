@@ -1,125 +1,119 @@
 ---
-// Animación de entrada del hero: arranca en el "eco" tipográfico del brandbook
-// (wordmark repetido con opacidad decreciente, dentro de un marco de guías) y se
-// resuelve en el lockup final (wordmark + claim). Un solo ciclo al cargar, nunca
-// en loop. Respeta prefers-reduced-motion (salta directo al estado final).
-const rows = [1, 0.55, 0.32, 0.18];
+// Wordmark del hero cinematográfico: parpadea como fotogramas de cine mudo /
+// zoótropo (animation-timing-function: steps — salto entre paradas, no
+// interpolación suave), con la amplitud del temblor decayendo hasta asentarse.
+// Un solo ciclo al cargar. Las capas atmosféricas (viñeta/grano/luz) viven
+// aparte en CinemaBackdrop.astro — ver esa nota para el porqué.
 ---
 
-<div class="vz-intro" role="img" aria-label="Vertienza — branding, contenido y datos">
-  <div class="vz-intro__echo" aria-hidden="true">
-    {rows.map((opacity) => (
-      <div class="vz-intro__row">
-        <img src="/logo/vertienza-logo-blanco.svg" alt="" style={`opacity:${opacity}`} />
-      </div>
-    ))}
-  </div>
-
-  <div class="vz-intro__final" aria-hidden="true">
-    <div class="vz-intro__logo">
-      <img src="/logo/vertienza-logo-blanco.svg" alt="" />
-    </div>
-    <p class="vz-intro__tag">branding · contenido · datos</p>
-  </div>
+<div class="vz-cinema-mark" aria-hidden="true">
+  <img src="/logo/vertienza-logo-blanco.svg" alt="" class="vz-cinema-mark__flicker" />
 </div>
+<p class="vz-cinema-mark__tag" aria-hidden="true">branding · contenido · datos</p>
+<span class="sr-only">Vertienza — branding, contenido y datos</span>
 
 <style>
-  .vz-intro {
-    position: relative;
-    width: clamp(15rem, 30vw, 21rem);
-    aspect-ratio: 4 / 3;
-    margin-bottom: var(--vz-space-lg);
-  }
-
-  .vz-intro__echo,
-  .vz-intro__final {
-    position: absolute;
-    inset: 0;
-  }
-
-  /* Etapa 1 — eco: el motivo de repetición del brandbook */
-  .vz-intro__echo {
-    display: flex;
-    flex-direction: column;
-    border: 1.5px dashed rgb(244 240 233 / 45%);
-    animation: vz-echo-out 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-  }
-
-  .vz-intro__row {
-    flex: 1 1 25%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .vz-intro__row img {
-    height: 62%;
-    width: auto;
-    max-width: none;
-  }
-
-  /* Etapa 2 — lockup final: wordmark + claim, ya sin marco */
-  .vz-intro__final {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.6em;
-    opacity: 0;
-    animation: vz-final-in 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-  }
-
-  .vz-intro__logo {
-    width: 112%;
+  .vz-cinema-mark {
+    width: clamp(16rem, 36vw, 32rem);
     overflow: hidden;
   }
 
-  .vz-intro__logo img {
+  .vz-cinema-mark__flicker {
     width: 100%;
     height: auto;
     display: block;
+    opacity: 0;
+    animation: vz-flicker 2.9s steps(1) forwards;
+    will-change: opacity, transform;
   }
 
-  .vz-intro__tag {
-    margin: 0;
+  .vz-cinema-mark__tag {
+    margin: 0.9em 0 0;
     font-family: var(--vz-font-display);
     font-style: italic;
-    font-size: clamp(1rem, 0.85rem + 0.6vw, 1.375rem);
+    font-size: clamp(1.0625rem, 0.9rem + 0.7vw, 1.5rem);
     color: var(--vz-cream-muted);
+    opacity: 0;
+    animation: vz-rise-in 1s var(--vz-ease-out) 2.6s forwards;
   }
 
-  @keyframes vz-echo-out {
-    0%,
+  @keyframes vz-flicker {
+    0% {
+      opacity: 0.12;
+      transform: scale(0.9) translateY(14px);
+    }
+    4% {
+      opacity: 0.85;
+      transform: scale(1.05) translateY(-8px);
+    }
+    9% {
+      opacity: 0.2;
+      transform: scale(0.94) translateY(6px);
+    }
+    14% {
+      opacity: 1;
+      transform: scale(1.03) translateY(-5px);
+    }
+    19% {
+      opacity: 0.08;
+      transform: scale(0.92) translateY(10px);
+    }
+    24% {
+      opacity: 0.8;
+      transform: scale(1.06) translateY(-6px);
+    }
     30% {
+      opacity: 0.25;
+      transform: scale(0.95) translateY(4px);
+    }
+    36% {
       opacity: 1;
+      transform: scale(1.02) translateY(-3px);
     }
-    62%,
-    100% {
-      opacity: 0;
+    42% {
+      opacity: 0.35;
+      transform: scale(0.97) translateY(4px);
     }
-  }
-
-  @keyframes vz-final-in {
-    0%,
-    45% {
-      opacity: 0;
-      transform: translateY(0.4em);
+    48% {
+      opacity: 0.9;
+      transform: scale(1.02) translateY(-2px);
     }
-    80%,
+    54% {
+      opacity: 0.5;
+      transform: scale(0.98) translateY(2px);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.005) translateY(0);
+    }
+    67% {
+      opacity: 0.7;
+      transform: scale(0.99) translateY(1px);
+    }
+    74% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    82% {
+      opacity: 0.88;
+      transform: scale(1) translateY(0);
+    }
+    90%,
     100% {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1) translateY(0);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .vz-intro__echo {
-      display: none;
-    }
-    .vz-intro__final {
+    .vz-cinema-mark__flicker {
       opacity: 1;
       animation: none;
       transform: none;
+    }
+    .vz-cinema-mark__tag {
+      opacity: 1;
+      animation: none;
     }
   }
 </style>
