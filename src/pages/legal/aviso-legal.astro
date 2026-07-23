@@ -13,19 +13,26 @@ import BrandMark from '../../components/BrandMark.astro';
       <h1 class="h-display h-display--section">Aviso legal y privacidad</h1>
 
       <!--
-        PENDIENTE (bloqueante antes de publicar en producción, no antes de Deploy Preview):
         Vertienza no tiene razón social constituida a día de hoy (4 autónomos, pacto de
-        socios pendiente — ver vertice-main/MIGRACION_VERTIENZA.md). Esta página NO debe
-        llevar datos de responsable del tratamiento inventados. Rellenar con datos reales
-        (autónomo/entidad, NIF/CIF, domicilio, email de contacto) en cuanto existan.
+        socios pendiente — ver vertice-main/MIGRACION_VERTIENZA.md). El responsable del
+        tratamiento es Alejandro Campos Lamas como autónomo, no una entidad "Vertienza".
+        Cuando exista sociedad, actualizar este bloque y el registro de actividades de
+        tratamiento correspondiente.
+
+        PENDIENTE: número de apartado de correos (Alejandro prefiere apartado postal a
+        domicilio particular — falta el dato concreto).
       -->
       <div class="vz-legal__body">
         <h2>Responsable del tratamiento</h2>
         <p>
-          [PENDIENTE — Vertienza no tiene razón social constituida todavía. Se completará con
-          los datos del responsable (autónomo o entidad, NIF/CIF, domicilio y email de
-          contacto) antes de la publicación en producción.]
+          Alejandro Campos Lamas, NIF 32839901H, actuando como autónomo (Vertienza es una
+          marca en solicitud ante la OEPM, expediente M4391997, sin sociedad constituida
+          todavía).
         </p>
+        <p>
+          Domicilio a efectos de notificaciones: [PENDIENTE — apartado de correos].
+        </p>
+        <p>Email de contacto: <a href="mailto:alejandro@vertienza.com">alejandro@vertienza.com</a>.</p>
 
         <h2>Finalidad</h2>
         <p>
@@ -79,5 +86,11 @@ import BrandMark from '../../components/BrandMark.astro';
   .vz-legal__body p {
     margin: 0;
     color: var(--vz-ink-muted);
+  }
+
+  .vz-legal__body a {
+    color: var(--vz-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>
