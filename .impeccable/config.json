@@ -1,0 +1,31 @@
+{
+  "_comentario": [
+    "Config del detector de antipatrones de diseno (npx impeccable detect).",
+    "",
+    "Criterio: se separan DOS clases de regla.",
+    "  PERENNES  -> defectos reales (accesibilidad, legibilidad, semantica).",
+    "               No caducan. Cuentan como fallo. Deben llegar a cero.",
+    "  TEMPORADA -> tells de moda de la IA de 2026 (paleta, tipografia, efectos).",
+    "               Caducan. Se silencian aqui para que no ensucien el gate,",
+    "               pero se revisan con la pasada de informe:",
+    "                 npx impeccable detect . --no-config",
+    "",
+    "Al decidir la paleta y las tipografias propias de Vertice, vaciar",
+    "ignoreRules: dejaran de saltar solas porque ya no habra defaults de IA."
+  ],
+
+  "detector": {
+    "ignoreRules": [
+      "cream-palette",
+      "overused-font",
+      "gradient-text",
+      "gpt-thin-border-wide-shadow",
+      "dark-glow",
+      "nested-cards",
+      "side-tab",
+      "flat-type-hierarchy"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": []
+  }
+}

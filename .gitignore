@@ -9,5 +9,8 @@ ux_ref/
 # Guía interna de plantilla de servicios — NO desplegar a la web
 docs/
 
+# Overrides personales del detector de diseno (la config compartida SI se versiona)
+.impeccable/config.local.json
+
 # Sistema
 .DS_Store
