@@ -1,0 +1,60 @@
+{
+  "marca": "Vertienza",
+  "_fuente": "Reglas derivadas del Mini Brandbook v1 (Sergio, julio 2026) y del canonico vertienza-design-tokens.json v1.1.0. Vertienza NO tiene todavia capa verbal (brand-voice), asi que el lexico prohibido es minimo y provisional.",
+  "_prueba": "Este fichero existe para comprobar si brandlint es generico o estaba hecho a medida de Sapioverse. Vertienza tiene otro stack (CSS plano, sin Tailwind), otro canonico y otras reglas.",
+  "canonico": "../vertice-main/Marca/vertienza-design-tokens.json",
+
+  "ambitos": {
+    "web": {
+      "dirs": [".", "servicios"],
+      "ext": [".html"],
+      "excluye": ["node_modules"]
+    }
+  },
+
+  "reglas": [
+    {
+      "id": "lexico-prohibido",
+      "tipo": "lexico-prohibido",
+      "ambito": "web",
+      "terminos": [
+        {
+          "patron": "\\bconsultor[ia|ía|es|as]*\\b|\\bconsultoria\\b|\\bconsultoría\\b",
+          "mensaje": "Lexico de marca (decision 2026-07-23): 'consultoria' y 'consultores' estan prohibidos de cara al publico. Sustitutos: 'servicios de datos', 'te acompanamos', 'te ayudamos'.",
+          "sev": "error"
+        },
+        {
+          "patron": "\\bv[eé]rtice\\b|verticedata",
+          "mensaje": "Nombre antiguo. La marca es Vertienza desde la refundacion (2026-06-11), con expediente OEPM M4391997.",
+          "sev": "error",
+          "salvo": "es un v[ée]rtice|son v[ée]rtices|v[ée]rtices conectados",
+          "_nota": "El juego de palabras ('Tu marca es un vertice. Los conectamos todos.') es copy de marca pendiente de reescritura por Sergio y Judy, no un resto tecnico. Se excluye a proposito para que no tape los restos reales."
+        }
+      ]
+    },
+
+    {
+      "id": "tics-de-ia",
+      "tipo": "tic-idioma",
+      "ambito": "web",
+      "_nota": "Vertienza no tiene brand-voice propio todavia. Se hereda el criterio de Sapioverse como hipotesis: si Sergio y Judy definen otra voz, esto cambia.",
+      "tics": [
+        {
+          "patron": "—",
+          "maxPorFichero": 1,
+          "mensaje": "Raya de inciso: tic de IA anglosajona",
+          "sev": "aviso"
+        }
+      ]
+    },
+
+    {
+      "id": "color-fuera-del-canonico",
+      "tipo": "color-no-canonico",
+      "ambito": "web",
+      "minUsos": 1,
+      "umbralError": 3,
+      "permitidosExtra": []
+    }
+  ]
+}
