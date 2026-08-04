@@ -1,0 +1,76 @@
+/* =========================================================================
+ * tokens.css — GENERADO. NO EDITAR A MANO.
+ *
+ * Fuente:   ~/Proyectos/vertice/interno/vertice-main/Marca/vertienza-design-tokens.json
+ * Marca:    Vertienza Design System v1.1.0
+ * Regenera: node scripts/build-tokens.mjs
+ *
+ * Cualquier cambio hecho aqui se pierde en la siguiente regeneracion.
+ * Los valores de marca se editan en el canonico, y solo alli.
+ *
+ * Estas variables son PRIMITIVAS (que tiene la marca). El mapeo semantico
+ * (que papel juega cada una en la web) vive en service.css: eso es una
+ * decision de diseno, no una derivacion, y por eso no se genera.
+ * ========================================================================= */
+
+:root {
+  /* --- Color --------------------------------------------------------- */
+  --vz-brand-600: #3A5F51;                               /* Verde Vertienza */
+  --vz-neutral-cream: #F4F0E9;                           /* Crema papel */
+  --vz-neutral-mist: #E3E7E1;                            /* Verde roto */
+  --vz-ink-base: #152420;                                /* Tinta verde-negra */
+  --vz-accent-copper: #C07B5B;                           /* Cobre apagado */
+  --vz-state-brandHover: #2F4E42;                        /* Verde -15% de luz. */
+  --vz-state-brandSoft: #EAEFEC;                         /* Verde al 8% sobre crema. */
+  --vz-state-copperHover: #A36548;                       /* Cobre -15% de luz. */
+  --vz-state-focus: #C07B5B;                             /* Anillo de foco = cobre. */
+  --vz-surface-paper: #FFFFFF;                           /* Tarjetas y formularios. */
+  --vz-surface-sunken: #EDEAE3;                          /* Crema -1 paso de luz. */
+  --vz-text-secondary: #58615C;                          /* 70% de tinta sobre crema. */
+  --vz-text-onBrand: #F4F0E9;                            /* Texto sobre verde de marca (6.3:1, AAA). */
+  --vz-text-onCopper: #152420;                           /* Texto sobre cobre = tinta (4.8:1, AA). */
+  --vz-border-base: #D8D4CB;                             /* Borde por defecto: tinta al 12% resuelta sobre crema. */
+  --vz-border-strong: #C4BFB4;                           /* Borde de enfasis: tinta al 18% resuelta sobre crema. */
+
+  /* --- Tipografia — familias ----------------------------------------- */
+  --vz-font-display: "Century Schoolbook", "C059", Georgia, serif; /* Titulares, acentos en itálica. */
+  --vz-font-body: Poppins, sans-serif;                   /* Cuerpo, interfaz, datos. */
+  --vz-font-logo: "MB Empire 01";                        /* SOLO logotipo (wordmark del isotipo), NUNCA tipografía corporativa ni texto vivo en la web. */
+
+  /* --- Tipografia — escala fluida ------------------------------------ */
+  --vz-fs-xs: clamp(0.8rem, 0.77rem + 0.12vw, 0.875rem); /* Pies de foto, etiquetas. */
+  --vz-fs-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem); /* Cuerpo de texto. */
+  --vz-fs-lg: clamp(1.2rem, 1.06rem + 0.6vw, 1.5rem);    /* Entradillas, h3. */
+  --vz-fs-xl: clamp(1.85rem, 1.4rem + 1.9vw, 2.7rem);    /* h2. */
+  --vz-fs-2xl: clamp(2.3rem, 1.65rem + 3.2vw, 3.9rem);   /* h1 de pagina interior. */
+  --vz-fs-3xl: clamp(3.2rem, 1.9rem + 6.4vw, 6.5rem);    /* Titular de hero. */
+
+  /* --- Tipografia — interlineado ------------------------------------- */
+  --vz-leading-tight: 1.15;                              /* Titulares en display. */
+  --vz-leading-base: 1.6;                                /* Cuerpo. */
+
+  /* --- Tipografia — pesos -------------------------------------------- */
+  --vz-weight-logo: 500;                                 /* MB Empire 01 Medium */
+
+  /* --- Espaciado (escala de 4px) ------------------------------------- */
+  --vz-space-1: 4px;
+  --vz-space-2: 8px;
+  --vz-space-3: 12px;
+  --vz-space-4: 16px;
+  --vz-space-5: 24px;                                    /* Padding minimo de tarjeta. */
+  --vz-space-6: 32px;
+  --vz-space-7: 48px;
+  --vz-space-8: 64px;
+  --vz-space-9: 96px;                                    /* Separacion entre secciones. */
+
+  /* --- Radios -------------------------------------------------------- */
+  --vz-radius-sm: 8px;
+  --vz-radius-base: 12px;                                /* Tarjetas, botones. */
+  --vz-radius-lg: 20px;                                  /* Contenedores grandes. */
+  --vz-radius-full: 999px;                               /* Pills y avatares. */
+
+  /* --- Sombras ------------------------------------------------------- */
+  --vz-shadow-sm: 0 1px 2px rgba(21, 36, 32, 0.04), 0 2px 6px rgba(21, 36, 32, 0.04);
+  --vz-shadow-md: 0 2px 4px rgba(21, 36, 32, 0.05), 0 8px 16px rgba(21, 36, 32, 0.06), 0 16px 32px rgba(21, 36, 32, 0.05);
+  --vz-shadow-lg: 0 4px 8px rgba(21, 36, 32, 0.05), 0 12px 24px rgba(21, 36, 32, 0.07), 0 28px 56px rgba(21, 36, 32, 0.08);
+}

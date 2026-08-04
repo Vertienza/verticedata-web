@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vértice — Encontramos el hueco de mercado de tu marca</title>
+  <title>Vertienza — Encontramos el hueco de mercado de tu marca</title>
   <meta name="description"
     content="Encontramos el hueco de mercado de tu marca y lo demostramos con datos. Estrategia y ejecución para PYMEs que no quieren gastar en corazonadas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="assets/tokens.css" />
   <style>
     *,
     *::before,
@@ -20,21 +21,47 @@
       padding: 0;
     }
 
-    /* Tema único: crema. Texto tinta (ink). Acentos de marca. */
+    /* Mapeo semántico de la marca (mismos papeles que en service.css).
+       Los valores vienen de assets/tokens.css — aquí no hay ni un hex de marca. */
     :root {
-      --blue: #2563eb;
-      --blue-lt: #3b82f6;
-      --teal: #0ea5e9;
-      --emerald: #10b981;
-      --amber: #f59e0b;
-      --cream: #f7f5f0;
-      --ink: #16203d;
-      --muted: #5b6478;
+      --cream: var(--vz-neutral-cream);
+      --cream-deep: var(--vz-neutral-mist);
+      --ink: var(--vz-ink-base);
+      --muted: #58615C;                  /* 70% tinta sobre crema — ver HUECOS */
       --surface: #ffffff;
-      --border: rgba(20, 30, 60, 0.10);
+      --border: rgba(21, 36, 32, 0.12);
+      --accent: var(--vz-brand-600);
+      --accent-soft: rgba(58, 95, 81, 0.10);
+      --accent-copper: var(--vz-accent-copper);
+      --on-accent: var(--vz-text-onBrand);
+      --accent-hover: var(--vz-state-brandHover);
       --radius: 12px;
       --radius-lg: 20px;
-      --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --serif: var(--vz-font-display);
+      --sans: var(--vz-font-body);
+
+      /* Alias legacy — DEPRECADOS, mapeados a marca. Ver service.css. */
+      --blue: var(--vz-brand-600);
+      --blue-lt: var(--vz-brand-600);
+      --teal: var(--vz-brand-600);
+      --emerald: var(--vz-brand-600);
+      --amber: var(--vz-accent-copper);
+    }
+
+    @font-face {
+      font-family: 'C059';
+      src: url('assets/fonts/C059-Roman.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'C059';
+      src: url('assets/fonts/C059-Italic.otf') format('opentype');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'C059';
+      src: url('assets/fonts/C059-Bold.otf') format('opentype');
+      font-weight: 700; font-style: normal; font-display: swap;
     }
 
     html {
@@ -42,7 +69,7 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: var(--sans);
       background: var(--cream);
       color: var(--ink);
       line-height: 1.6;
@@ -60,8 +87,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(37, 99, 235, 0.10);
-      border: 1px solid rgba(37, 99, 235, 0.30);
+      background: rgba(58, 95, 81, 0.10);
+      border: 1px solid rgba(58, 95, 81, 0.30);
       color: var(--blue);
       font-size: 12px;
       font-weight: 600;
@@ -93,7 +120,7 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(247, 245, 240, 0.82);
+      background: rgba(244, 240, 233, 0.82);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
@@ -116,21 +143,12 @@
       color: var(--ink);
     }
 
-    .logo-mark {
-      width: 34px;
-      height: 34px;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
-      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    }
-
-    .logo-text {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -.01em;
-    }
-
-    .logo-text span {
-      color: var(--blue);
+    /* Lockup real de marca (SVG con paths). El brandbook prohíbe deformarlo,
+       así que solo se escala por altura y el ancho va en auto. */
+    .logo-img {
+      height: 28px;
+      width: auto;
+      display: block;
     }
 
     .nav-links {
@@ -153,7 +171,7 @@
 
     .btn-nav {
       background: var(--blue);
-      color: #fff;
+      color: var(--on-accent);
       font-size: 14px;
       font-weight: 600;
       padding: 9px 20px;
@@ -234,20 +252,20 @@
     .btn-primary {
       display: inline-block;
       background: var(--blue);
-      color: #fff;
+      color: var(--on-accent);
       font-size: 16px;
       font-weight: 600;
       padding: 14px 28px;
       border-radius: 10px;
       text-decoration: none;
       transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 24px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 4px 24px rgba(58, 95, 81, 0.25);
     }
 
     .btn-primary:hover {
       background: var(--blue-lt);
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 8px 32px rgba(58, 95, 81, 0.35);
     }
 
     /* ── TÍTULOS DE SECCIÓN ── */
@@ -287,14 +305,14 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 32px 28px;
-      box-shadow: 0 1px 3px rgba(20, 30, 60, 0.04);
+      box-shadow: 0 1px 3px rgba(21, 36, 32, 0.04);
       transition: transform .2s, border-color .2s, box-shadow .2s;
     }
 
     .svc-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(37, 99, 235, 0.30);
-      box-shadow: 0 12px 32px rgba(20, 30, 60, 0.08);
+      border-color: rgba(58, 95, 81, 0.30);
+      box-shadow: 0 12px 32px rgba(21, 36, 32, 0.08);
     }
 
     /* card que enlaza a su página de servicio */
@@ -393,7 +411,7 @@
       position: relative;
       overflow: hidden;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(20, 30, 60, 0.07);
+      box-shadow: 0 20px 60px rgba(21, 36, 32, 0.07);
     }
 
     .cta-h2 {
@@ -462,7 +480,7 @@
 
     .form-input {
       background: var(--surface);
-      border: 1px solid rgba(20, 30, 60, 0.15);
+      border: 1px solid rgba(21, 36, 32, 0.15);
       border-radius: 8px;
       padding: 11px 14px;
       color: var(--ink);
@@ -474,17 +492,17 @@
 
     .form-input:focus {
       border-color: var(--blue);
-      background: rgba(37, 99, 235, 0.04);
+      background: rgba(58, 95, 81, 0.04);
     }
 
     .form-input::placeholder {
-      color: rgba(20, 30, 60, 0.32);
+      color: rgba(21, 36, 32, 0.32);
     }
 
     .btn-submit {
       grid-column: 1 / -1;
       background: var(--blue);
-      color: #fff;
+      color: var(--on-accent);
       font-size: 16px;
       font-weight: 700;
       padding: 15px;
@@ -493,13 +511,13 @@
       cursor: pointer;
       font-family: inherit;
       transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 24px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 4px 24px rgba(58, 95, 81, 0.25);
     }
 
     .btn-submit:hover {
       background: var(--blue-lt);
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 8px 32px rgba(58, 95, 81, 0.35);
     }
 
     .form-note {
@@ -600,8 +618,7 @@
   <nav>
     <div class="nav-inner">
       <a href="#hero" class="logo">
-        <div class="logo-mark"></div>
-        <span class="logo-text">Vértice</span>
+        <img class="logo-img" src="assets/logo-vertienza-negro.svg" alt="Vertienza" width="164" height="28" />
       </a>
       <ul class="nav-links">
         <li><a href="#servicios">Servicios</a></li>
@@ -759,13 +776,13 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-copy">© 2026 Vértice Data S.L. Todos los derechos reservados.</div>
+      <div class="footer-copy">© 2026 Vertienza Todos los derechos reservados.</div>
       <div class="footer-tagline">
         <span>Estrategia</span> · <span>Datos</span> · <span>Creatividad</span>
       </div>
       <div class="footer-links">
         <a href="#cta">Contacto</a>
-        <a href="mailto:alejandro@verticedata.tech">alejandro@verticedata.tech</a>
+        <a href="mailto:alejandro@vertienza.com">alejandro@vertienza.com</a>
       </div>
     </div>
   </footer>
@@ -794,7 +811,7 @@
         form.innerHTML = '<p style="text-align:center; font-size:18px; font-weight:600; color:var(--emerald); padding:40px 0;">Recibido. Te contactamos en las próximas 24 horas.</p>';
       })
       .catch(() => {
-        form.innerHTML = '<p style="text-align:center; font-size:16px; color:var(--muted); padding:40px 0;">Ha habido un error. Escríbenos directamente a <a href="mailto:alejandro@verticedata.tech" style="color:var(--blue);">alejandro@verticedata.tech</a></p>';
+        form.innerHTML = '<p style="text-align:center; font-size:16px; color:var(--muted); padding:40px 0;">Ha habido un error. Escríbenos directamente a <a href="mailto:alejandro@vertienza.com" style="color:var(--blue);">alejandro@vertienza.com</a></p>';
       });
     });
 
@@ -833,7 +850,7 @@
             const dx = n.x - m.x, dy = n.y - m.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 135) {
-              ctx.strokeStyle = 'rgba(37,99,235,' + (1 - dist / 135) * 0.12 + ')';
+              ctx.strokeStyle = 'rgba(58, 95, 81,' + (1 - dist / 135) * 0.12 + ')';
               ctx.lineWidth = 1;
               ctx.beginPath();
               ctx.moveTo(n.x, n.y);
@@ -843,7 +860,7 @@
           }
         }
         for (let k = 0; k < nodes.length; k++) {
-          ctx.fillStyle = 'rgba(37,99,235,0.32)';
+          ctx.fillStyle = 'rgba(58, 95, 81,0.32)';
           ctx.beginPath();
           ctx.arc(nodes[k].x, nodes[k].y, 1.6, 0, Math.PI * 2);
           ctx.fill();

@@ -11,59 +11,97 @@
      6. UTILIDADES    (eyebrow, reveal, iconos de color)
      7. RESPONSIVE
 
-   IDENTIDAD: mono-tema crema + Source Serif 4 (titulares) + Inter (cuerpo).
-   No romper. El color de ACENTO de cada servicio se inyecta por página con
-   `style="--accent: var(--teal)"` en el <body> (default = azul).
+   IDENTIDAD: la marca real de Vertienza (Mini Brandbook v1, Sergio, jul-2026).
+   Los VALORES no viven aquí: vienen de assets/tokens.css, que se genera desde
+   vertice-main/Marca/vertienza-design-tokens.json. Aquí solo se decide QUÉ PAPEL
+   juega cada color de marca en la web — eso es diseño, no derivación.
+   Cargar SIEMPRE tokens.css antes que esta hoja.
    ========================================================================== */
 
 /* ── 1. TOKENS ───────────────────────────────────────────────────────────── */
 :root {
-  /* color de marca */
-  --blue: #2563eb;
-  --blue-lt: #3b82f6;
-  --teal: #0ea5e9;
-  --emerald: #10b981;
-  --amber: #f59e0b;
+  /* Reparto de superficie declarado por la marca:
+     verde 40% · crema 35% · mist 15% · tinta 7% · cobre 3% (nunca >5%).  */
 
   /* superficies — tres planos de luz sobre crema (NO tema dual) */
-  --cream: #f7f5f0;
-  --cream-deep: #f1ece2;   /* sección alterna, -1 paso de luz */
-  --surface: #ffffff;      /* cards / formularios */
-  --ink: #16203d;          /* texto */
-  --ink-band: #131c34;     /* única banda oscura (clímax / cadena de valor) */
-  --muted: #5b6478;
-  --border: rgba(22, 32, 61, 0.10);
-  --border-strong: rgba(22, 32, 61, 0.16);
+  --cream: var(--vz-neutral-cream);       /* base, 35% */
+  --cream-deep: var(--vz-neutral-mist);   /* sección alterna: verde roto, 15% */
+  --surface: var(--vz-surface-paper);     /* cards/formularios */
+  --sunken: var(--vz-surface-sunken);     /* inputs, fondos hundidos */
+  --ink: var(--vz-ink-base);              /* texto, 7% */
+  --ink-band: var(--vz-brand-600);        /* bandas dominantes: verde, 40% */
+  --muted: var(--vz-text-secondary);      /* 70% tinta sobre crema, AA verificado */
+  --border: var(--vz-border-base);
+  --border-strong: var(--vz-border-strong);
 
-  /* acento por página (lo sobreescribe cada servicio) */
-  --accent: var(--blue);
-  --accent-soft: rgba(37, 99, 235, 0.10);
+  /* acento único de marca. Antes cada servicio inyectaba su propio color de
+     Tailwind por <body>; la marca tiene UN verde y UN cobre, no cinco colores. */
+  --accent: var(--vz-brand-600);
+  --accent-soft: var(--vz-state-brandSoft);
+  --accent-hover: var(--vz-state-brandHover);
+  --accent-copper: var(--vz-accent-copper);  /* énfasis puntual, ≤5% de superficie */
+  --on-accent: var(--vz-text-onBrand);       /* texto sobre verde: crema, no blanco */
+  --focus: var(--vz-state-focus);
+
+  /* Alias legacy — DEPRECADOS. Quedan mapeados a marca para que ninguna página
+     que aún los invoque pinte un color fuera del brandbook. Borrar cuando el
+     detector no encuentre referencias. */
+  --blue: var(--vz-brand-600);
+  --blue-lt: var(--vz-brand-600);
+  --teal: var(--vz-brand-600);
+  --emerald: var(--vz-brand-600);
+  --amber: var(--vz-accent-copper);
 
   /* radios */
-  --radius: 12px;
-  --radius-lg: 20px;
+  --radius-sm: var(--vz-radius-sm);
+  --radius: var(--vz-radius-base);
+  --radius-lg: var(--vz-radius-lg);
+  --radius-full: var(--vz-radius-full);
 
-  /* tipografía */
-  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', system-ui, sans-serif;
+  /* tipografía — display y cuerpo salen del canónico */
+  --serif: var(--vz-font-display);
+  --sans: var(--vz-font-body);
 
   /* escala tipográfica fluida (la jerarquía nace del tamaño, no del color) */
-  --step--1: clamp(0.8rem, 0.77rem + 0.12vw, 0.875rem);
-  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
-  --step-1:  clamp(1.2rem, 1.06rem + 0.6vw, 1.5rem);
-  --step-2:  clamp(1.85rem, 1.4rem + 1.9vw, 2.7rem);
-  --step-3:  clamp(2.3rem, 1.65rem + 3.2vw, 3.9rem);
-  --step-4:  clamp(3.2rem, 1.9rem + 6.4vw, 6.5rem);
+  --step--1: var(--vz-fs-xs);
+  --step-0:  var(--vz-fs-base);
+  --step-1:  var(--vz-fs-lg);
+  --step-2:  var(--vz-fs-xl);
+  --step-3:  var(--vz-fs-2xl);
+  --step-4:  var(--vz-fs-3xl);
 
-  /* sombras en cascada, tintadas de tinta (nunca negro puro sobre crema) */
-  --shadow-sm: 0 1px 2px rgba(22, 32, 61, 0.04), 0 2px 6px rgba(22, 32, 61, 0.04);
-  --shadow-md: 0 2px 4px rgba(22, 32, 61, 0.05), 0 8px 16px rgba(22, 32, 61, 0.06), 0 16px 32px rgba(22, 32, 61, 0.05);
-  --shadow-lg: 0 4px 8px rgba(22, 32, 61, 0.05), 0 12px 24px rgba(22, 32, 61, 0.07), 0 28px 56px rgba(22, 32, 61, 0.08);
+  /* sombras en cascada, tintadas con la tinta de marca (nunca negro puro) */
+  --shadow-sm: var(--vz-shadow-sm);
+  --shadow-md: var(--vz-shadow-md);
+  --shadow-lg: var(--vz-shadow-lg);
 
   /* kit de UI ilustrada (mockups nativos consistentes) */
-  --skel: rgba(22, 32, 61, 0.085);
-  --skel-2: rgba(22, 32, 61, 0.06);
-  --tile: rgba(22, 32, 61, 0.045);
+  --skel: rgba(21, 36, 32, 0.085);
+  --skel-2: rgba(21, 36, 32, 0.06);
+  --tile: rgba(21, 36, 32, 0.045);
+}
+
+/* @font-face de la tipografía display. Poppins (cuerpo) viene de Google Fonts.
+   C059 es el clon métrico libre de Century Schoolbook que declara el brandbook. */
+@font-face {
+  font-family: 'C059';
+  src: url('fonts/C059-Roman.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'C059';
+  src: url('fonts/C059-Italic.otf') format('opentype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'C059';
+  src: url('fonts/C059-Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'C059';
+  src: url('fonts/C059-BdIta.otf') format('opentype');
+  font-weight: 700; font-style: italic; font-display: swap;
 }
 
 /* ── 2. BASE ─────────────────────────────────────────────────────────────── */
@@ -116,7 +154,7 @@ img { display: block; max-width: 100%; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 25% 0%, rgba(37, 99, 235, 0.16), transparent 62%);
+  background: radial-gradient(ellipse 80% 60% at 25% 0%, rgba(58, 95, 81, 0.16), transparent 62%);
   pointer-events: none;
 }
 .section--ink .container { position: relative; z-index: 1; }
@@ -139,18 +177,18 @@ img { display: block; max-width: 100%; }
   font-size: var(--step-4);
   line-height: 1;
   font-weight: 600;
-  color: rgba(22, 32, 61, 0.05);
+  color: rgba(21, 36, 32, 0.05);
   pointer-events: none;
   z-index: 0;
 }
-.section--ink .sec-index { color: rgba(247, 245, 240, 0.07); }
+.section--ink .sec-index { color: rgba(244, 240, 233, 0.07); }
 
 /* ── 4. CHROME (nav / footer / botones) ──────────────────────────────────── */
 nav {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
-  background: rgba(247, 245, 240, 0.82);
+  background: rgba(244, 240, 233, 0.82);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding-inline: 24px;
@@ -164,19 +202,15 @@ nav {
   height: 64px;
 }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
-.logo-mark {
-  width: 34px; height: 34px;
-  background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-}
-.logo-text { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
-.logo-text span { color: var(--blue); }
+/* Lockup real de marca (SVG con paths). El brandbook prohíbe deformarlo, así que
+   solo se escala por altura y el ancho va en auto. */
+.logo-img { height: 28px; width: auto; display: block; }
 .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
 .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; transition: color .2s; }
 .nav-links a:hover { color: var(--ink); }
 
 .btn-nav {
-  background: var(--blue); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   font-size: 14px; font-weight: 600;
   padding: 9px 20px; border-radius: 8px;
   text-decoration: none; transition: background .2s, transform .15s;
@@ -185,14 +219,14 @@ nav {
 
 .btn-primary {
   display: inline-block;
-  background: var(--blue); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   font-size: 16px; font-weight: 600;
   padding: 15px 32px; border-radius: 10px;
   text-decoration: none;
   transition: background .2s, transform .15s, box-shadow .2s;
-  box-shadow: 0 4px 24px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 4px 24px rgba(58, 95, 81, 0.25);
 }
-.btn-primary:hover { background: var(--blue-lt); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37, 99, 235, 0.35); }
+.btn-primary:hover { background: var(--blue-lt); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(58, 95, 81, 0.35); }
 
 footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 .footer-inner {
@@ -244,7 +278,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
   line-height: 1.55;
   font-weight: 400;
 }
-.section--ink .lede { color: rgba(247, 245, 240, 0.72); }
+.section--ink .lede { color: rgba(244, 240, 233, 0.72); }
 
 /* 5.1 Statement grande (hero / problema) — respira con max-width corto */
 .statement {
@@ -279,8 +313,8 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(22, 32, 61, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(22, 32, 61, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(21, 36, 32, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(21, 36, 32, 0.035) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 70% at 20% 10%, #000 0%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 20% 10%, #000 0%, transparent 70%);
@@ -294,7 +328,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 }
 .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .2s; }
 .breadcrumb a:hover { color: var(--accent); }
-.breadcrumb span { color: rgba(22, 32, 61, 0.30); }
+.breadcrumb span { color: rgba(21, 36, 32, 0.30); }
 
 .svc-hero h1 {
   font-family: var(--serif);
@@ -353,7 +387,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 .tag {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--accent-soft);
-  border: 1px solid rgba(37, 99, 235, 0.30);
+  border: 1px solid rgba(58, 95, 81, 0.30);
   color: var(--accent);
   font-size: 12px; font-weight: 600; letter-spacing: .08em;
   text-transform: uppercase; padding: 5px 14px; border-radius: 999px;
@@ -383,7 +417,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
   gap: 7px;
   padding: 12px 14px;
   border-bottom: 1px solid var(--border);
-  background: rgba(22, 32, 61, 0.02);
+  background: rgba(21, 36, 32, 0.02);
 }
 .window__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
 .window img { width: 100%; height: auto; display: block; }
@@ -431,11 +465,11 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
   box-shadow: var(--shadow-sm);
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(37, 99, 235, 0.28); }
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(58, 95, 81, 0.28); }
 .card--feature {
   grid-column: 1 / -1;
-  border-color: rgba(37, 99, 235, 0.28);
-  background: linear-gradient(180deg, rgba(37, 99, 235, 0.05), rgba(255, 255, 255, 0)), var(--surface);
+  border-color: rgba(58, 95, 81, 0.28);
+  background: linear-gradient(180deg, rgba(58, 95, 81, 0.05), rgba(255, 255, 255, 0)), var(--surface);
   box-shadow: var(--shadow-md);
 }
 /* fila de 3 capacidades de texto + fila de 2 cards con mockup */
@@ -482,8 +516,8 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 .flow__chip--out { border-left: 3px solid var(--emerald); }
 .flow__core {
   background: linear-gradient(160deg, var(--blue), var(--blue-lt));
-  color: #fff; border-radius: 16px; padding: 26px 22px; text-align: center;
-  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.32);
+  color: var(--on-accent); border-radius: 16px; padding: 26px 22px; text-align: center;
+  box-shadow: 0 14px 36px rgba(58, 95, 81, 0.32);
 }
 .flow__core .k { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .85; margin-bottom: 6px; }
 .flow__core .t { font-family: var(--serif); font-size: 22px; font-weight: 600; margin-bottom: 8px; }
@@ -494,7 +528,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 /* callout de entrega */
 .deliver {
   margin-top: 2rem; display: flex; gap: 16px; align-items: flex-start;
-  background: rgba(16, 185, 129, 0.07); border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(58, 95, 81, 0.07); border: 1px solid rgba(58, 95, 81, 0.25);
   border-radius: var(--radius-lg); padding: 24px 28px;
 }
 .deliver svg { flex-shrink: 0; width: 26px; height: 26px; color: var(--emerald); stroke-width: 2; margin-top: 2px; }
@@ -559,7 +593,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 .conn-row__status { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--emerald); }
 .conn-row__status::before {
   content: ''; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--emerald); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.16);
+  background: var(--emerald); box-shadow: 0 0 0 3px rgba(58, 95, 81, 0.16);
 }
 
 /* sub-etiqueta del caso (Reto / Solución / Resultado) — estructura escaneable */
@@ -657,28 +691,28 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 .chain-node {
   border-radius: var(--radius-lg);
   padding: 30px 28px;
-  border: 1px solid rgba(247, 245, 240, 0.14);
-  background: rgba(247, 245, 240, 0.04);
+  border: 1px solid rgba(244, 240, 233, 0.14);
+  background: rgba(244, 240, 233, 0.04);
 }
 .chain-node.here {
   border-color: var(--blue-lt);
-  background: linear-gradient(170deg, rgba(59, 130, 246, 0.18), rgba(247, 245, 240, 0.02));
-  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(170deg, rgba(58, 95, 81, 0.18), rgba(244, 240, 233, 0.02));
+  box-shadow: 0 12px 40px rgba(58, 95, 81, 0.25);
 }
 .chain-node.soon { opacity: .72; border-style: dashed; cursor: default; }
-.chain-step { font-size: 11px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: rgba(247, 245, 240, 0.55); margin-bottom: 10px; }
+.chain-step { font-size: 11px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: rgba(244, 240, 233, 0.55); margin-bottom: 10px; }
 .chain-node.here .chain-step { color: var(--blue-lt); }
 .chain-node h4 { font-family: var(--serif); font-size: var(--step-1); font-weight: 600; margin-bottom: 8px; color: var(--cream); }
-.chain-node p { font-size: 14px; color: rgba(247, 245, 240, 0.68); line-height: 1.6; }
+.chain-node p { font-size: 14px; color: rgba(244, 240, 233, 0.68); line-height: 1.6; }
 .chain-pill {
   display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
   border-radius: 999px; padding: 3px 10px; margin-bottom: 12px;
 }
-.chain-pill.now { color: #fff; background: var(--blue); }
-.chain-pill.later { color: rgba(247, 245, 240, 0.7); background: rgba(247, 245, 240, 0.10); }
-.chain-arrow { display: flex; align-items: center; justify-content: center; color: rgba(247, 245, 240, 0.35); }
+.chain-pill.now { color: var(--on-accent); background: var(--accent); }
+.chain-pill.later { color: rgba(244, 240, 233, 0.7); background: rgba(244, 240, 233, 0.10); }
+.chain-arrow { display: flex; align-items: center; justify-content: center; color: rgba(244, 240, 233, 0.35); }
 .chain-arrow svg { width: 26px; height: 26px; stroke-width: 1.75; }
-.chain-foot { margin-top: clamp(2rem, 4vw, 2.5rem); font-size: var(--step-1); color: rgba(247, 245, 240, 0.78); line-height: 1.55; max-width: 52ch; font-weight: 400; }
+.chain-foot { margin-top: clamp(2rem, 4vw, 2.5rem); font-size: var(--step-1); color: rgba(244, 240, 233, 0.78); line-height: 1.55; max-width: 52ch; font-weight: 400; }
 .chain-foot strong { color: var(--cream); font-weight: 600; }
 
 /* 5.10 CTA de cierre */
@@ -739,7 +773,7 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 }
 .ui-cat__row:last-child { border-bottom: 0; }
 .ui-cat__row .nm { display: flex; flex-direction: column; gap: 6px; }
-.ui-cat__head { background: rgba(22, 32, 61, 0.02); padding-block: 9px; }
+.ui-cat__head { background: rgba(21, 36, 32, 0.02); padding-block: 9px; }
 .ui-cat__head span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 
 /* rejilla de canales (card "Conectores de salida") */
@@ -757,8 +791,8 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 .ui-pf { padding: 16px; display: grid; grid-template-columns: 84px 1fr; gap: 16px; align-items: center; }
 .ui-pf__img { position: relative; aspect-ratio: 1; border-radius: 10px; background: var(--tile); border: 1px solid var(--border); display: grid; place-items: center; color: var(--muted); }
 .ui-pf__img svg { width: 30px; height: 30px; stroke-width: 1.5; }
-.ui-pf__badge { position: absolute; top: -8px; right: -8px; width: 24px; height: 24px; border-radius: 50%; background: var(--emerald); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4); }
-.ui-pf__badge svg { width: 14px; height: 14px; color: #fff; stroke-width: 3; }
+.ui-pf__badge { position: absolute; top: -8px; right: -8px; width: 24px; height: 24px; border-radius: 50%; background: var(--emerald); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(58, 95, 81, 0.4); }
+.ui-pf__badge svg { width: 14px; height: 14px; color: var(--on-accent); stroke-width: 3; }
 .ui-pf__attrs { display: flex; flex-direction: column; gap: 0; }
 .ui-pf__attr { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; }
 .ui-pf__attr:last-child { border-bottom: 0; }
@@ -776,21 +810,21 @@ footer { padding: 40px 24px; border-top: 1px solid var(--border); }
 .vx-node {
   position: absolute; width: 250px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(247, 245, 240, 0.16);
-  background: rgba(247, 245, 240, 0.05);
+  border: 1px solid rgba(244, 240, 233, 0.16);
+  background: rgba(244, 240, 233, 0.05);
   padding: 22px 24px;
 }
 .vx-node h4 { font-family: var(--serif); font-size: var(--step-1); font-weight: 600; color: var(--cream); margin-bottom: 6px; }
-.vx-node p { font-size: 13.5px; line-height: 1.55; color: rgba(247, 245, 240, 0.7); }
+.vx-node p { font-size: 13.5px; line-height: 1.55; color: rgba(244, 240, 233, 0.7); }
 .vx-node--top { top: 0; left: 50%; transform: translateX(-50%); }
 .vx-node--left { bottom: 0; left: 0; }
 .vx-node--right { bottom: 0; right: 0; }
 .vx-node.is-here {
   border-color: var(--blue-lt);
-  background: linear-gradient(170deg, rgba(59, 130, 246, 0.20), rgba(247, 245, 240, 0.02));
-  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(170deg, rgba(58, 95, 81, 0.20), rgba(244, 240, 233, 0.02));
+  box-shadow: 0 12px 40px rgba(58, 95, 81, 0.25);
 }
-.vx-pill { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--blue); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
+.vx-pill { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--on-accent); background: var(--blue); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
 @media (max-width: 768px) {
   .vx-stage { min-height: 0; display: flex; flex-direction: column; gap: 14px; }
   .vx-node { position: static; width: 100%; transform: none; }
