@@ -1,7 +1,7 @@
 {
   "marca": "Vertienza",
-  "_fuente": "Reglas derivadas del Mini Brandbook v1 (Sergio, julio 2026) y del canonico vertienza-design-tokens.json v1.1.0. Vertienza NO tiene todavia capa verbal (brand-voice), asi que el lexico prohibido es minimo y provisional.",
-  "_prueba": "Este fichero existe para comprobar si brandlint es generico o estaba hecho a medida de Sapioverse. Vertienza tiene otro stack (CSS plano, sin Tailwind), otro canonico y otras reglas.",
+  "_fuente": "Reglas derivadas del Mini Brandbook v1 (Sergio, julio 2026), del canonico vertienza-design-tokens.json y de brand-guide.md v1.1.0 (capas 0 y 1, destiladas el 2026-08-05 de los textos de web escritos por Sergio).",
+  "_cambio_2026-08-05": "Los anti-tics DEJAN DE HEREDARSE de Sapioverse. Antes eran hipotesis prestadas; ahora salen de medir la voz real de Vertienza sobre 'VERTIENZA web textos.txt' (26 frases, media 12,3 palabras). Hallazgo que motivo el cambio: Sapioverse prohibe el patron 'No es X. Es Y.' como tic de IA, y en Vertienza ese patron es la FIRMA retorica (5 apariciones en 26 frases). El gate heredado marcaba como texto generado el mejor copy de Sergio.",
   "canonico": "../vertice-main/Marca/vertienza-design-tokens.json",
 
   "ambitos": {
@@ -29,6 +29,16 @@
           "sev": "error",
           "salvo": "es un v[ée]rtice|son v[ée]rtices|v[ée]rtices conectados",
           "_nota": "El juego de palabras ('Tu marca es un vertice. Los conectamos todos.') es copy de marca pendiente de reescritura por Sergio y Judy, no un resto tecnico. Se excluye a proposito para que no tape los restos reales."
+        },
+        {
+          "patron": "\\b(somos una|nuestra|la) agencia\\b",
+          "mensaje": "La categoria elegida es ESTUDIO de branded content, no agencia (brand-guide 'Lexico canonico'). Hablar de agencias ajenas si esta permitido.",
+          "sev": "aviso"
+        },
+        {
+          "patron": "\\bsinergia|\\becosistema\\b|\\brevolucionari|\\bpartner\\b|\\bllave en mano\\b",
+          "mensaje": "Generico de sector (brand-guide 'Lexico prohibido'). El texto de Sergio no usa ninguno.",
+          "sev": "aviso"
         }
       ]
     },
@@ -37,13 +47,45 @@
       "id": "tics-de-ia",
       "tipo": "tic-idioma",
       "ambito": "web",
-      "_nota": "Vertienza no tiene brand-voice propio todavia. Se hereda el criterio de Sapioverse como hipotesis: si Sergio y Judy definen otra voz, esto cambia.",
+      "_nota": "MEDIDOS sobre la voz real de Vertienza el 2026-08-05, no heredados. En el texto de referencia de Sergio: 1 raya de inciso, 0 triadas, 0 exclamaciones, 0 emoji.",
       "tics": [
         {
           "patron": "—",
           "maxPorFichero": 1,
-          "mensaje": "Raya de inciso: tic de IA anglosajona",
+          "mensaje": "Raya de inciso: tic anglosajon. La voz de Vertienza usa exactamente 1 en toda la home de Sergio",
           "sev": "aviso"
+        },
+        {
+          "patron": "!",
+          "maxPorFichero": 0,
+          "mensaje": "Exclamacion: la voz es calidez SECA. El texto de referencia no tiene ninguna",
+          "sev": "aviso"
+        },
+        {
+          "patron": "[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\u2600-\\u27BF]",
+          "_nota": "Surrogate pairs y simbolos BMP. El linter compila con new RegExp(patron,'g') SIN flag 'u', asi que \\u{...} lanza SyntaxError y tumba el gate entero.",
+          "maxPorFichero": 0,
+          "mensaje": "Emoji: fuera del registro de la marca",
+          "sev": "aviso"
+        },
+        {
+          "patron": "[Ee]n un mundo (donde|cada vez)",
+          "maxPorFichero": 0,
+          "mensaje": "Arranque de IA. Empezar por el problema concreto del cliente",
+          "sev": "aviso"
+        },
+        {
+          "patron": "\\b\\w+, \\w+ y \\w+\\b",
+          "maxPorFichero": 2,
+          "mensaje": "Triada ('rapido, claro y sin fricción'): tic de IA cuando se repite. El texto de referencia tiene 0",
+          "sev": "aviso"
+        },
+        {
+          "patron": "\\bno es\\b[^.!?]{2,60}[.!?]\\s*[Ee]s\\b",
+          "maxPorFichero": 2,
+          "mensaje": "'Niega y reformula' es LA figura de la casa, no un tic — pero pierde fuerza pasada la segunda vez en la misma pieza",
+          "sev": "aviso",
+          "_nota": "Regla INVERTIDA respecto a Sapioverse, que la prohibe del todo. Aqui se permite y solo se limita. Ver brand-guide 'La figura de la casa'."
         }
       ]
     },
