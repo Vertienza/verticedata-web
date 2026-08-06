@@ -3,15 +3,20 @@
   "_fuente": "Reglas derivadas del Mini Brandbook v1 (Sergio, julio 2026), del canonico vertienza-design-tokens.json y de brand-guide.md v1.1.0 (capas 0 y 1, destiladas el 2026-08-05 de los textos de web escritos por Sergio).",
   "_cambio_2026-08-05": "Los anti-tics DEJAN DE HEREDARSE de Sapioverse. Antes eran hipotesis prestadas; ahora salen de medir la voz real de Vertienza sobre 'VERTIENZA web textos.txt' (26 frases, media 12,3 palabras). Hallazgo que motivo el cambio: Sapioverse prohibe el patron 'No es X. Es Y.' como tic de IA, y en Vertienza ese patron es la FIRMA retorica (5 apariciones en 26 frases). El gate heredado marcaba como texto generado el mejor copy de Sergio.",
   "canonico": "../vertice-main/Marca/vertienza-design-tokens.json",
-
   "ambitos": {
     "web": {
-      "dirs": [".", "servicios"],
-      "ext": [".html"],
-      "excluye": ["node_modules"]
+      "dirs": [
+        ".",
+        "servicios"
+      ],
+      "ext": [
+        ".html"
+      ],
+      "excluye": [
+        "node_modules"
+      ]
     }
   },
-
   "reglas": [
     {
       "id": "lexico-prohibido",
@@ -42,7 +47,6 @@
         }
       ]
     },
-
     {
       "id": "tics-de-ia",
       "tipo": "tic-idioma",
@@ -89,7 +93,6 @@
         }
       ]
     },
-
     {
       "id": "color-fuera-del-canonico",
       "tipo": "color-no-canonico",
@@ -98,5 +101,11 @@
       "umbralError": 3,
       "permitidosExtra": []
     }
-  ]
+  ],
+  "gate": {
+    "impeccable": {
+      "baseline": 53,
+      "_nota": "Trinquete: el hook solo bloquea si SUBE. Deuda medida el 2026-08-06 (incluye un low-contrast 1.0:1 de #3a5f51 sobre #3a5f51 en servicios/marketing-digital.html). Cuando bajes la deuda, baja este numero."
+    }
+  }
 }
